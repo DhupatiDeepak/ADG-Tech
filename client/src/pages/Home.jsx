@@ -1,128 +1,164 @@
-import React from 'react';
-import { ArrowRight, Zap, Target, Award, Users, ShieldCheck, Globe, Cpu } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, ChevronRight, Zap, Shield, Globe, Cpu } from "lucide-react";
+import MagneticButton from "../components/MagneticButton";
+import Marquee from "../components/Marquee";
 
 const Home = () => {
-    return (
-        <div className="flex flex-col space-y-24 pb-24">
-            {/* Hero Section */}
-            <section className="relative pt-32 pb-20 overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden">
-                   <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 blur-[120px] rounded-full"></div>
-                   <div className="absolute bottom-[-10%] right-[-10%] w-[30%] h-[30%] bg-indigo-600/10 blur-[100px] rounded-full"></div>
-                </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+    },
+  };
 
-                <div className="container mx-auto px-6 text-center">
-                    <div className="inline-flex items-center space-x-2 px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8 animate-fade-in">
-                        <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                        <span className="text-blue-400 text-xs font-black uppercase tracking-widest">Innovation Powered by Excellence</span>
-                    </div>
-                    
-                    <h1 className="text-6xl md:text-8xl mb-8 animate-fade-in stagger-1">
-                        Precision Engineering <br />
-                        <span className="glow-text">Redefined.</span>
-                    </h1>
-                    
-                    <p className="max-w-3xl mx-auto text-xl text-slate-400 mb-12 animate-fade-in stagger-2 leading-relaxed">
-                        At ADG Tech, we bridge the gap between imagination and production. High-performance mechanical design, advanced simulation, and AI-driven insights for the industries of tomorrow.
-                    </p>
-                    
-                    <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 animate-fade-in stagger-3">
-                        <Link to="/dashboard" className="btn-premium w-full md:w-auto">
-                            Explore Platform <ArrowRight size={20} />
-                        </Link>
-                        <button className="px-8 py-3 bg-slate-800/50 hover:bg-slate-800 text-white font-bold rounded-2xl border border-slate-700 transition-all duration-300 w-full md:w-auto">
-                            Our Services
-                        </button>
-                    </div>
-                </div>
-            </section>
+  const itemVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
 
-            {/* Core Capabilities */}
-            <section className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl mb-4">Core Capabilities</h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto italic">Delivering certainty in every dimension.</p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <FeatureCard 
-                        icon={<Zap className="text-blue-400" size={32} />}
-                        title="Mechanical Design"
-                        desc="From conceptual drafting to production-ready CAD models with micron-level precision."
-                    />
-                    <FeatureCard 
-                        icon={<Target className="text-indigo-400" size={32} />}
-                        title="FEA Simulation"
-                        desc="Advanced static, thermal, and dynamic analysis to ensure structural integrity and efficiency."
-                    />
-                    <FeatureCard 
-                        icon={<Globe className="text-blue-400" size={32} />}
-                        title="Reverse Engineering"
-                        desc="Transforming physical components into high-fidelity digital assets via 3D scanning."
-                    />
-                    <FeatureCard 
-                        icon={<Award className="text-indigo-400" size={32} />}
-                        title="Value Engineering"
-                        desc="Optimizing designs for cost-effectiveness without compromising quality or performance."
-                    />
-                    <FeatureCard 
-                        icon={<Cpu className="text-blue-400" size={32} />}
-                        title="AI Integration"
-                        desc="Leveraging machine learning to predict failure modes and optimize geometry automatically."
-                    />
-                    <FeatureCard 
-                        icon={<ShieldCheck className="text-indigo-400" size={32} />}
-                        title="Technical Auditing"
-                        desc="Rigorous validation and certification support for global engineering standards."
-                    />
-                </div>
-            </section>
+  return (
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="flex flex-col gap-32 pb-32"
+    >
+      {/* Hero Section */}
+      <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
+        <motion.h2 
+          variants={itemVariants}
+          className="text-5xl md:text-8xl font-[1000] uppercase italic tracking-tighter mb-2 text-[#0F172A] leading-none"
+        >
+          ADG <span className="text-[#0369A1]">Tech.</span>
+        </motion.h2>
+        <motion.div variants={itemVariants} className="mb-8">
+          <span className="px-4 py-1.5 rounded-full bg-[#E0F2FE] text-[#0369A1] text-[10px] font-bold uppercase tracking-[0.2em] border border-[#0369A1]/10">
+            Next-Gen Engineering
+          </span>
+        </motion.div>
+        <motion.h1 
+          variants={itemVariants}
+          className="text-6xl md:text-8xl font-[1000] uppercase tracking-tighter mb-6 text-[#0F172A] leading-[0.9]"
+        >
+          DYNAMIC <br />
+          <span className="text-[#0369A1]">SYSTEMS</span> <br />
+          FOR THE FUTURE.
+        </motion.h1>
 
-            {/* Impact Section */}
-            <section className="bg-slate-800/20 py-24 border-y border-slate-800/50">
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-3xl md:text-4xl mb-16">Global Impact by Numbers</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
-                        <StatItem value="150+" label="Successful Projects" />
-                        <StatItem value="80+" label="Global Clients" />
-                        <StatItem value="12" label="Innovation Awards" />
-                        <StatItem value="10" label="Years Experience" />
-                    </div>
-                </div>
-            </section>
+        <motion.p 
+          variants={itemVariants}
+          className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
+        >
+          We build precision-engineered solutions that bridge the gap between imagination and production. High-performance design meets AI-driven insights.
+        </motion.p>
 
-            {/* Call to Action */}
-            <section className="container mx-auto px-6">
-                <div className="glass-card bg-gradient-to-br from-blue-600/20 to-transparent border-blue-500/20 text-center p-16">
-                    <h2 className="text-4xl md:text-5xl mb-6 italic">Ready to accelerate your next project?</h2>
-                    <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-                        Join the hundreds of engineering firms that rely on ADG Tech for high-fidelity design and analysis.
-                    </p>
-                    <button className="btn-premium mx-auto">
-                        Connect with an Expert <ArrowRight size={20} />
-                    </button>
-                </div>
-            </section>
+        <motion.div variants={itemVariants}>
+          <MagneticButton>
+            <button className="btn-premium group">
+              Get Started <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </MagneticButton>
+        </motion.div>
+      </section>
+
+      {/* Marquee Section */}
+      <section className="py-12 border-y border-slate-100 overflow-hidden bg-slate-50/50">
+        <Marquee direction="left" speed={30}>
+          <span className="mx-12 marquee-text">PRECISION</span>
+          <span className="mx-12 marquee-text">INNOVATION</span>
+          <span className="mx-12 marquee-text">DYNAMICS</span>
+          <span className="mx-12 marquee-text">ENGINEERING</span>
+        </Marquee>
+      </section>
+
+      {/* Features Grid */}
+      <section className="container mx-auto px-6">
+        <motion.div variants={itemVariants} className="text-center mb-24">
+          <h2 className="text-5xl font-black uppercase tracking-tighter mb-4 text-[#0F172A]">Core Capabilities</h2>
+          <div className="w-20 h-1 bg-[#0369A1] mx-auto rounded-full" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <FeatureCard 
+            icon={<Cpu size={28} />} 
+            title="CAD Analysis" 
+            desc="Automated topological optimization through neural network processing."
+            index={0}
+          />
+          <FeatureCard 
+            icon={<Zap size={28} />} 
+            title="Simulation" 
+            desc="Hyper-accurate fluid dynamics and structural stress forecasting."
+            index={1}
+          />
+          <FeatureCard 
+            icon={<Shield size={28} />} 
+            title="Validation" 
+            desc="Compliance monitoring and rigorous component stress testing."
+            index={2}
+          />
+          <FeatureCard 
+            icon={<Globe size={28} />} 
+            title="Deployment" 
+            desc="Seamless integration with global manufacturing supply chains."
+            index={3}
+          />
         </div>
-    );
+      </section>
+
+      {/* CTA Section */}
+      <section id="contact-section" className="container mx-auto px-6">
+        <div className="bg-[#0F172A] rounded-[3rem] p-16 md:p-24 text-center text-white overflow-hidden relative group">
+          <div className="absolute inset-0 bg-[#0369A1] opacity-0 group-hover:opacity-5 transition-opacity duration-1000" />
+          <motion.h2 
+            whileInView={{ y: [40, 0], opacity: [0, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 relative z-10"
+          >
+            Ready to Build <br /> <span className="text-slate-400 italic">Something Extraordinary?</span>
+          </motion.h2>
+          <motion.div 
+            whileInView={{ scale: [0.9, 1], opacity: [0, 1] }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative z-10"
+          >
+            <MagneticButton>
+              <button className="px-12 py-5 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs hover:bg-[#0369A1] hover:text-white transition-colors">
+                Start Project
+              </button>
+            </MagneticButton>
+          </motion.div>
+        </div>
+      </section>
+    </motion.div>
+  );
 };
 
-const FeatureCard = ({ icon, title, desc }) => (
-    <div className="glass-card group">
-        <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-            {icon}
-        </div>
-        <h3 className="text-2xl mb-4 group-hover:text-blue-400 transition-colors uppercase italic font-black tracking-tighter">{title}</h3>
-        <p className="text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed">{desc}</p>
+const FeatureCard = ({ icon, title, desc, index }) => (
+  <motion.div 
+    variants={{
+      hidden: { y: 20, opacity: 0 },
+      visible: { y: 0, opacity: 1, transition: { delay: index * 0.1, duration: 0.6 } }
+    }}
+    className="glass-card group"
+  >
+    <div className="w-14 h-14 bg-slate-50 text-[#0F172A] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0369A1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-[10deg]">
+      {icon}
     </div>
-);
-
-const StatItem = ({ value, label }) => (
-    <div className="flex flex-col items-center">
-        <span className="text-5xl md:text-6xl font-black text-white mb-2 tracking-tighter">{value}</span>
-        <span className="text-blue-400 uppercase tracking-widest text-xs font-bold">{label}</span>
+    <h3 className="text-xl font-black uppercase mb-4 tracking-tighter">{title}</h3>
+    <p className="text-[#64748B] text-sm leading-relaxed font-medium">
+      {desc}
+    </p>
+    <div className="mt-8 flex items-center gap-2 text-[#0369A1] text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-500">
+      Learn More <ChevronRight size={12} />
     </div>
+  </motion.div>
 );
 
 export default Home;

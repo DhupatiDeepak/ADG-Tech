@@ -1,29 +1,38 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import MainLayout from './layouts/MainLayout';
+import LiveBackground from './components/LiveBackground';
 
 const App = () => {
+  const location = useLocation();
+
   return (
-    <div className="min-h-screen bg-[#0f172a] text-slate-200 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-white text-[#0F172A] font-sans selection:bg-[#2563EB] selection:text-white">
       <Toaster 
         position="top-center" 
         toastOptions={{ 
           style: { 
-            background: '#1e293b', 
-            color: '#f1f5f9',
-            border: '1px solid #334155'
+            background: '#FFFFFF', 
+            color: '#0F172A',
+            border: '1px solid rgba(15,23,42,0.05)',
+            borderRadius: '1rem',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
           } 
         }} 
       />
+      <LiveBackground />
       <MainLayout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </AnimatePresence>
       </MainLayout>
     </div>
   );
