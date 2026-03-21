@@ -13,15 +13,15 @@ const MainLayout = ({ children }) => {
 
       <footer className="py-20 mt-20 border-t border-slate-200/60 bg-[#F8FAFC]">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-32">
             <div className="max-w-sm">
-              <h2 className="text-4xl font-black mb-6 tracking-tighter text-[#0F172A]">ADG TECH.</h2>
-              <p className="text-[#64748B] text-lg leading-relaxed font-medium">
+              <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tighter text-[#0F172A]">ADG TECH.</h2>
+              <p className="text-[#64748B] text-base md:text-lg leading-relaxed font-medium">
                 Next-generation engineering solutions for complex mechanical and digital challenges. Built for innovators, by innovators.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 w-full lg:w-auto">
               <div className="flex flex-col gap-4">
                 <span className="text-xs uppercase tracking-widest text-[#0369A1] font-bold mb-2">Social</span>
                 <a href="#" className="text-[#64748B] hover:text-[#0369A1] font-medium transition-colors">Twitter</a>

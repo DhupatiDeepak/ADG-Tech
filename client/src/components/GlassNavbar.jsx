@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Layout, Mail, ChevronDown, ChevronRight, Settings, Globe } from 'lucide-react';
+import { Home, Layout, Mail, ChevronDown, ChevronRight, Settings, Globe, Menu, X } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
 const GlassNavbar = () => {
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = React.useState(null);
   const [openSubDropdown, setOpenSubDropdown] = React.useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-section');
@@ -39,7 +40,7 @@ const GlassNavbar = () => {
 
   return (
     <nav className="glass-nav" onMouseLeave={() => { setOpenDropdown(null); setOpenSubDropdown(null); }}>
-      <div className="flex items-center gap-6 px-4">
+      <div className="flex items-center justify-between md:justify-start gap-6 px-4 w-full">
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 group border-r border-black/5 pr-6 py-1">
           <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-black text-xs group-hover:bg-[#0369A1] transition-all duration-300 transform group-hover:rotate-12">
@@ -51,8 +52,16 @@ const GlassNavbar = () => {
           </div>
         </Link>
 
-        {/* Nav Items */}
-        <div className="flex items-center gap-1">
+        {/* Mobile Menu Toggle */}
+        <button 
+          className="md:hidden p-2 text-slate-800"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+
+        {/* Desktop Nav Items */}
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
             const hasDropdown = !!item.dropdown;
@@ -151,6 +160,72 @@ const GlassNavbar = () => {
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white/95 backdrop-blur-xl border-t border-black/5 overflow-hidden"
+          >
+            <div className="flex flex-col p-4 gap-2">
+              {navItems.map((item) => (
+                <div key={item.path} className="flex flex-col">
+                  <Link 
+                    to={item.path}
+                    onClick={() => !item.dropdown && setIsMobileMenuOpen(false)}
+                    className="flex justify-between items-center p-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-black/5"
+                  >
+                    <span className="flex items-center gap-2">{item.icon} {item.name}</span>
+                    {item.dropdown && (
+                      <ChevronDown size={14} className={openDropdown === item.name ? "rotate-180 transition-transform" : "transition-transform"} onClick={(e) => { e.preventDefault(); setOpenDropdown(openDropdown === item.name ? null : item.name); }} />
+                    )}
+                  </Link>
+                  <AnimatePresence>
+                    {item.dropdown && openDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex flex-col pl-4 mt-2 gap-2 overflow-hidden"
+                      >
+                        {item.dropdown.map((dropItem) => (
+                          <div key={dropItem.name}>
+                            <div className="uppercase text-[10px] font-bold text-slate-400 p-2 flex items-center gap-2">
+                              {dropItem.name === 'Mechanical' ? <Settings size={12} /> : <Globe size={12} />}
+                              {dropItem.name}
+                            </div>
+                            <div className="flex flex-col pl-4 gap-1">
+                              {dropItem.subItems.map((subItem) => (
+                                <Link
+                                  key={subItem}
+                                  to="/dashboard"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="text-xs font-semibold text-slate-600 p-2 hover:bg-black/5 rounded-lg"
+                                >
+                                  {subItem}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+              <button 
+                onClick={() => { scrollToContact(); setIsMobileMenuOpen(false); }}
+                className="mt-4 p-3 rounded-xl bg-[#0369A1] text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2"
+              >
+                <Mail size={16} /> Contact Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -33,7 +33,7 @@ const Home = () => {
       <section className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-6">
         <motion.h2 
           variants={itemVariants}
-          className="text-5xl md:text-8xl font-[1000] uppercase italic tracking-tighter mb-2 text-[#0F172A] leading-none"
+          className="text-4xl sm:text-5xl md:text-8xl font-[1000] uppercase italic tracking-tighter mb-2 text-[#0F172A] leading-none"
         >
           ADG <span className="text-[#0369A1]">Tech.</span>
         </motion.h2>
@@ -44,7 +44,7 @@ const Home = () => {
         </motion.div>
         <motion.h1 
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-[1000] uppercase tracking-tighter mb-6 text-[#0F172A] leading-[0.9]"
+          className="text-4xl sm:text-5xl md:text-8xl font-[1000] uppercase tracking-tighter mb-6 text-[#0F172A] leading-[1.1] md:leading-[0.9]"
         >
           DYNAMIC <br />
           <span className="text-[#0369A1]">SYSTEMS</span> <br />
@@ -79,8 +79,8 @@ const Home = () => {
 
       {/* Features Grid */}
       <section className="container mx-auto px-6">
-        <motion.div variants={itemVariants} className="text-center mb-24">
-          <h2 className="text-5xl font-black uppercase tracking-tighter mb-4 text-[#0F172A]">Core Capabilities</h2>
+        <motion.div variants={itemVariants} className="text-center mb-16 md:mb-24">
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-[#0F172A]">Core Capabilities</h2>
           <div className="w-20 h-1 bg-[#0369A1] mx-auto rounded-full" />
         </motion.div>
 
@@ -114,12 +114,12 @@ const Home = () => {
 
       {/* CTA Section */}
       <section id="contact-section" className="container mx-auto px-6">
-        <div className="bg-[#0F172A] rounded-[3rem] p-16 md:p-24 text-center text-white overflow-hidden relative group">
+        <div className="bg-[#0F172A] rounded-[2rem] md:rounded-[3rem] p-8 py-16 md:p-24 text-center text-white overflow-hidden relative group">
           <div className="absolute inset-0 bg-[#0369A1] opacity-0 group-hover:opacity-5 transition-opacity duration-1000" />
           <motion.h2 
             whileInView={{ y: [40, 0], opacity: [0, 1] }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 relative z-10"
+            className="text-3xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter mb-8 relative z-10"
           >
             Ready to Build <br /> <span className="text-slate-400 italic">Something Extraordinary?</span>
           </motion.h2>
