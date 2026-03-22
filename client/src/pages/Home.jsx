@@ -22,6 +22,13 @@ const Home = () => {
     },
   };
 
+  const services = [
+    { image: "/images/web_dev.png", title: "Web & Platforms", desc: "Custom websites and powerful service platforms tailored to your expectations." },
+    { image: "/images/mobile_app.png", title: "Mobile Apps", desc: "High-quality smartphone applications designed directly for the Playstore." },
+    { image: "/images/ai_models.png", title: "AI Integration", desc: "Embedding intelligent, bespoke AI models directly into your systems." },
+    { image: "/images/mechanical.png", title: "Mechanical Automation", desc: "Cutting-edge mechanical design and intelligent software automation." },
+  ];
+
   return (
     <motion.div
       initial="hidden"
@@ -35,7 +42,7 @@ const Home = () => {
           variants={itemVariants}
           className="text-4xl sm:text-5xl md:text-8xl font-[1000] uppercase italic tracking-tighter mb-2 text-[#0F172A] leading-none"
         >
-          ADG <span className="text-[#0369A1]">Tech.</span>
+          AI <span className="text-[#0369A1]">Bunt</span>
         </motion.h2>
         <motion.div variants={itemVariants} className="mb-8">
           <span className="px-4 py-1.5 rounded-full bg-[#E0F2FE] text-[#0369A1] text-[10px] font-bold uppercase tracking-[0.2em] border border-[#0369A1]/10">
@@ -46,16 +53,16 @@ const Home = () => {
           variants={itemVariants}
           className="text-4xl sm:text-5xl md:text-8xl font-[1000] uppercase tracking-tighter mb-6 text-[#0F172A] leading-[1.1] md:leading-[0.9]"
         >
-          DYNAMIC <br />
-          <span className="text-[#0369A1]">SYSTEMS</span> <br />
-          FOR THE FUTURE.
+          SOFTWARE, AI & <br />
+          <span className="text-[#0369A1]">MECHANICAL</span> <br />
+          ENGINEERING.
         </motion.h1>
 
         <motion.p 
           variants={itemVariants}
           className="text-lg md:text-xl text-[#64748B] max-w-2xl mx-auto mb-12 font-medium leading-relaxed"
         >
-          We build precision-engineered solutions that bridge the gap between imagination and production. High-performance design meets AI-driven insights.
+          We craft custom websites, mobile apps, and intelligent AI models tailored to your expectations, alongside advanced mechanical design and automation.
         </motion.p>
 
         <motion.div variants={itemVariants}>
@@ -70,10 +77,9 @@ const Home = () => {
       {/* Marquee Section */}
       <section className="py-12 border-y border-slate-100 overflow-hidden bg-slate-50/50">
         <Marquee direction="left" speed={30}>
-          <span className="mx-12 marquee-text">PRECISION</span>
-          <span className="mx-12 marquee-text">INNOVATION</span>
-          <span className="mx-12 marquee-text">DYNAMICS</span>
-          <span className="mx-12 marquee-text">ENGINEERING</span>
+          {["WEB DEVELOPMENT", "MOBILE APPS", "AI MODELS", "MECHANICAL DESIGN", "SOFTWARE AUTOMATION", "WEB DEVELOPMENT", "MOBILE APPS"].map((text, i) => (
+            <span key={i} className="mx-12 marquee-text">{text}</span>
+          ))}
         </Marquee>
       </section>
 
@@ -85,30 +91,20 @@ const Home = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <FeatureCard 
-            icon={<Cpu size={28} />} 
-            title="CAD Analysis" 
-            desc="Automated topological optimization through neural network processing."
-            index={0}
-          />
-          <FeatureCard 
-            icon={<Zap size={28} />} 
-            title="Simulation" 
-            desc="Hyper-accurate fluid dynamics and structural stress forecasting."
-            index={1}
-          />
-          <FeatureCard 
-            icon={<Shield size={28} />} 
-            title="Validation" 
-            desc="Compliance monitoring and rigorous component stress testing."
-            index={2}
-          />
-          <FeatureCard 
-            icon={<Globe size={28} />} 
-            title="Deployment" 
-            desc="Seamless integration with global manufacturing supply chains."
-            index={3}
-          />
+          {services.map((service, idx) => (
+            <motion.div 
+              key={idx}
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+              className="bg-white rounded-3xl p-6 border border-slate-200/60 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] transition-all duration-500 group overflow-hidden"
+            >
+              <div className="w-full h-48 mb-6 rounded-2xl overflow-hidden relative border border-slate-100/50">
+                <img src={service.image} alt={service.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+              </div>
+              <h3 className="text-xl font-bold mb-2 uppercase tracking-tight text-[#0F172A]">{service.title}</h3>
+              <p className="text-[#64748B] text-sm leading-relaxed font-medium">{service.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -139,26 +135,5 @@ const Home = () => {
     </motion.div>
   );
 };
-
-const FeatureCard = ({ icon, title, desc, index }) => (
-  <motion.div 
-    variants={{
-      hidden: { y: 20, opacity: 0 },
-      visible: { y: 0, opacity: 1, transition: { delay: index * 0.1, duration: 0.6 } }
-    }}
-    className="glass-card group"
-  >
-    <div className="w-14 h-14 bg-slate-50 text-[#0F172A] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#0369A1] group-hover:text-white transition-all duration-500 transform group-hover:rotate-[10deg]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-black uppercase mb-4 tracking-tighter">{title}</h3>
-    <p className="text-[#64748B] text-sm leading-relaxed font-medium">
-      {desc}
-    </p>
-    <div className="mt-8 flex items-center gap-2 text-[#0369A1] text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0 duration-500">
-      Learn More <ChevronRight size={12} />
-    </div>
-  </motion.div>
-);
 
 export default Home;

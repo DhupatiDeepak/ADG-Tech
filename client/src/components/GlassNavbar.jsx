@@ -44,10 +44,10 @@ const GlassNavbar = () => {
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2 group border-r border-black/5 pr-6 py-1">
           <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center text-white font-black text-xs group-hover:bg-[#0369A1] transition-all duration-300 transform group-hover:rotate-12">
-            A
+            AI
           </div>
           <div className="flex flex-col leading-none">
-            <span className="text-[13px] font-black tracking-tighter uppercase text-black">ADG Tech.</span>
+            <span className="text-[13px] font-black tracking-tighter uppercase text-black">AI Bunt</span>
             <span className="text-[7px] font-bold tracking-[0.2em] uppercase text-[#0369A1]">Engineering</span>
           </div>
         </Link>

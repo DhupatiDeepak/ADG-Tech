@@ -40,7 +40,7 @@ const Dashboard = () => {
         <div className="flex items-center gap-4">
             <div className="text-right hidden sm:block">
                 <p className="text-xs font-bold uppercase tracking-widest text-[#0F172A] leading-none mb-1">Lead Engineer</p>
-                <p className="text-[10px] text-slate-400 uppercase tracking-widest">engineering-lead@adg.tech</p>
+                <p className="text-[10px] text-slate-400 uppercase tracking-widest">engineering-lead@aibunt.com</p>
             </div>
             <div className="w-10 h-10 bg-slate-100 border border-slate-200 text-[#0F172A] rounded-full flex items-center justify-center text-[10px] font-black">
               LE

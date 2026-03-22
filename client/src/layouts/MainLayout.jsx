@@ -15,9 +15,9 @@ const MainLayout = ({ children }) => {
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-32">
             <div className="max-w-sm">
-              <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tighter text-[#0F172A]">ADG TECH.</h2>
+              <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tighter text-[#0F172A]">AI BUNT</h2>
               <p className="text-[#64748B] text-base md:text-lg leading-relaxed font-medium">
-                Next-generation engineering solutions for complex mechanical and digital challenges. Built for innovators, by innovators.
+                Pioneering custom websites, high-performing mobile apps, intelligent AI models, and seamless mechanical software automation.
               </p>
             </div>
             
@@ -38,7 +38,7 @@ const MainLayout = ({ children }) => {
           </div>
           
           <div className="mt-32 pt-12 border-t border-slate-200/60 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold">© 2026 ADG Technologies. All rights reserved.</p>
+            <p className="text-slate-400 text-[10px] uppercase tracking-widest font-bold">© 2026 AI Bunt. All rights reserved.</p>
             <div className="flex gap-8 text-slate-400 text-[10px] uppercase tracking-widest font-bold">
               <a href="#" className="hover:text-[#0369A1] transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-[#0369A1] transition-colors">Terms of Service</a>
