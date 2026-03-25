@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Layout, Mail, ChevronDown, ChevronRight, Settings, Globe, Menu, X, Sun, Moon, Cpu } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import logo from '../assets/aibunt_logo.png';
 
 const GlassNavbar = () => {
   const location = useLocation();
@@ -37,12 +38,12 @@ const GlassNavbar = () => {
         },
         {
           title: 'Artificial Intelligence',
-          color: '#F59E0B', // Amber
+          color: '#85B53D', // Leaf Green
           subItems: ['Design Automation with AI', 'Robotics & AI']
         },
         {
           title: 'Software & Tech',
-          color: '#8B5CF6', // Purple
+          color: '#5A8424', // Darker Green
           subItems: ['Web & Software Services', 'ECD Services']
         }
       ]
@@ -61,17 +62,12 @@ const GlassNavbar = () => {
       >
       <div className="flex items-center justify-between md:justify-start gap-2 px-3 w-full">
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group py-1 pr-4 border-r mr-1" style={{ borderColor: 'var(--border-color)' }}>
-          <div
-            className="w-8 h-8 rounded-xl flex items-center justify-center text-white font-black text-[11px] transition-all duration-300 group-hover:rotate-12 group-hover:scale-110"
-            style={{ background: 'linear-gradient(135deg, var(--accent) 0%, #8B5CF6 100%)' }}
-          >
-            AI
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-[13px] font-black tracking-tighter uppercase" style={{ color: 'var(--text-primary)' }}>AI Bunt</span>
-            <span className="text-[7px] font-bold tracking-[0.2em] uppercase" style={{ color: 'var(--accent-teal)' }}>Engineering</span>
-          </div>
+        <Link to="/" className="flex items-center group py-1 mr-2">
+          <img 
+            src={logo} 
+            alt="AI Bunt Logo" 
+            className="h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105" 
+          />
         </Link>
 
         {/* Desktop Nav Items */}
@@ -355,7 +351,7 @@ const GlassNavbar = () => {
               <button
                 onClick={() => { scrollToContact(); setIsMobileMenuOpen(false); }}
                 className="mt-2 p-3 rounded-xl text-white font-bold uppercase tracking-widest text-[11px] flex items-center justify-center gap-2 transition-all duration-300"
-                style={{ background: 'linear-gradient(135deg, var(--accent), #8B5CF6)' }}
+                style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-teal))' }}
               >
                 <Mail size={15} /> Contact Us
               </button>
@@ -411,7 +407,7 @@ const GlassNavbar = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex items-end p-6 md:p-8">
                   <h3 className="text-white text-2xl md:text-3xl font-black tracking-tight leading-tight">
-                    Software & <br/><span style={{ color: '#8B5CF6' }}>Tech.</span>
+                    Software & <br/><span style={{ color: 'var(--accent)' }}>Tech.</span>
                   </h3>
                 </div>
               </div>
@@ -419,12 +415,12 @@ const GlassNavbar = () => {
               {/* Right Side Matter */}
               <div className="w-full md:w-3/5 p-6 sm:p-8 md:p-10 flex flex-col justify-center relative overflow-hidden" style={{ background: 'var(--bg-primary)' }}>
                 <div className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4 w-max relative z-10"
-                     style={{ background: '#8B5CF620', color: '#8B5CF6', border: '1px solid #8B5CF640' }}>
+                     style={{ background: 'var(--accent-soft)', color: 'var(--accent)', border: '1px solid var(--accent)' }}>
                   Department
                 </div>
                 
                 <h2 className="text-2xl sm:text-3xl font-black mb-6 tracking-tight flex items-baseline gap-2 relative z-10" style={{ color: 'var(--text-primary)' }}>
-                  <span style={{ color: '#8B5CF6', fontSize: '0.7em', fontFamily: 'monospace' }}>06.</span> 
+                  <span style={{ color: 'var(--accent)', fontSize: '0.7em', fontFamily: 'monospace' }}>06.</span> 
                   Web & Software Services
                 </h2>
                 
@@ -445,8 +441,8 @@ const GlassNavbar = () => {
                     "Hosting & Domain Services"
                   ].map((service, idx) => (
                     <li key={idx} className="flex items-center gap-3 group cursor-default">
-                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-[2]" style={{ background: '#8B5CF6' }} />
-                      <span className="text-[13px] font-semibold transition-colors duration-300 group-hover:text-purple-400" style={{ color: 'var(--text-secondary)' }}>
+                      <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-[2]" style={{ background: 'var(--accent)' }} />
+                      <span className="text-[13px] font-semibold transition-colors duration-300 group-hover:text-green-400" style={{ color: 'var(--text-secondary)' }}>
                         {service}
                       </span>
                     </li>
@@ -460,15 +456,15 @@ const GlassNavbar = () => {
                       const contactSection = document.getElementById('contact-section');
                       if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="px-6 py-2.5 rounded-xl font-bold text-[12px] text-white uppercase tracking-widest transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)]"
-                    style={{ background: 'linear-gradient(135deg, var(--accent), #8B5CF6)' }}
+                    className="px-6 py-2.5 rounded-xl font-bold text-[12px] text-white uppercase tracking-widest transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(133,181,61,0.4)]"
+                    style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-teal))' }}
                   >
                     Get Started
                   </button>
                 </div>
                 
                 {/* Decorative background element */}
-                <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-purple-500/10 rounded-full blur-[80px] z-0 pointer-events-none" />
+                <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-green-500/10 rounded-full blur-[80px] z-0 pointer-events-none" />
               </div>
             </motion.div>
           </motion.div>

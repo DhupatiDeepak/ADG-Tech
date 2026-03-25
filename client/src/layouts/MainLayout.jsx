@@ -2,6 +2,7 @@ import React from 'react';
 import GlassNavbar from '../components/GlassNavbar';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
+import logo from '../assets/aibunt_logo.png';
 
 const MainLayout = ({ children }) => {
   return (
@@ -26,16 +27,15 @@ const MainLayout = ({ children }) => {
                 Contact Us
               </span>
               
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-black text-[14px] shadow-lg"
-                  style={{ background: 'linear-gradient(135deg, var(--accent), #8B5CF6)' }}
-                >
-                  AI
-                </div>
+              <div className="flex flex-col items-start gap-4 mb-6">
+                <img 
+                  src={logo} 
+                  alt="AI Bunt Logo" 
+                  className="w-24 h-24 object-contain shadow-lg rounded-xl bg-white p-2" 
+                />
                 <div>
                   <h2 className="text-xl md:text-2xl font-black tracking-tight leading-none" style={{ color: 'var(--text-primary)' }}>
-                    Aibunt Technical Industrial
+                    AI Bunt Technical Industrial
                   </h2>
                   <h2 className="text-xl md:text-2xl font-black tracking-tight leading-none mt-1" style={{ color: 'var(--text-primary)' }}>
                     Services Pvt Ltd

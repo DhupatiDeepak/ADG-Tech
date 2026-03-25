@@ -5,8 +5,6 @@ import { AnimatePresence } from 'framer-motion';
 import { useTheme } from './context/ThemeContext';
 import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
-import LiveBackground from './components/LiveBackground';
-import ParticleBackground from './components/ParticleBackground';
 import CursorGlow from './components/CursorGlow';
 import ProjectsPage from './pages/ProjectsPage';
 
@@ -34,9 +32,7 @@ const App = () => {
           }
         }}
       />
-      <ParticleBackground />
       <CursorGlow />
-      <LiveBackground />
       <MainLayout>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>

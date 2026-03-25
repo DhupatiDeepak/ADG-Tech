@@ -1,17 +1,32 @@
-import React, { useCallback } from "react";
-import Particles from "react-tsparticles";
+import React, { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadFull } from "tsparticles";
 
 const ParticleBackground = () => {
-  const particlesInit = useCallback(async (engine) => {
-    // This loads the tsparticles package bundle
-    await loadFull(engine);
+  const [init, setInit] = useState(false);
+
+  // this should be run only once per application lifetime
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
+      // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+      // starting from v2 you can add only the features you need reducing the bundle size
+      await loadFull(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
+  if (!init) return null;
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
+      particlesLoaded={particlesLoaded}
       options={{
         background: { color: "transparent" },
         fpsLimit: 120,
@@ -77,7 +92,7 @@ const ParticleBackground = () => {
         width: "100%",
         height: "100%",
         zIndex: -1,
-        pointerEvents: "none", // Don't block clicks from other elements
+        pointerEvents: "none",
       }}
     />
   );

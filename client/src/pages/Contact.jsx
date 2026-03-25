@@ -15,17 +15,17 @@ const Contact = () => {
         <div className="animate-fade-in min-h-screen bg-[#0f172a] text-white">
             {/* Background Elements */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-pink-900/20 rounded-full blur-[120px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-900/20 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-900/20 rounded-full blur-[120px]" />
             </div>
 
             <div className="relative pt-20 pb-20 px-4 md:px-8">
                 <div className="max-w-4xl mx-auto text-center mb-16">
-                    <span className="inline-block py-1 px-3 rounded-full bg-pink-500/10 text-pink-400 text-sm font-bold tracking-widest uppercase mb-4 border border-pink-500/20">
+                    <span className="inline-block py-1 px-3 rounded-full bg-green-500/10 text-green-400 text-sm font-bold tracking-widest uppercase mb-4 border border-green-500/20">
                         Get in Touch
                     </span>
                     <h1 className="text-5xl md:text-6xl font-black mb-6 tracking-tight">
-                        Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Extraordinary</span>
+                        Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-500">Extraordinary</span>
                     </h1>
                     <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                         Have a project in mind? We help forward-thinking companies build the future with cutting-edge engineering and AI solutions.
@@ -41,12 +41,12 @@ const Contact = () => {
                             <h3 className="text-2xl font-bold mb-8 text-white">Contact Info</h3>
                             <div className="space-y-8">
                                 <div className="flex items-start gap-5 group/item">
-                                    <div className="p-3.5 rounded-xl bg-[#1e293b] text-pink-500 group-hover/item:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
+                                    <div className="p-3.5 rounded-xl bg-[#1e293b] text-green-500 group-hover/item:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                                     </div>
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-1">Email</p>
-                                        <p className="text-white font-medium text-lg hover:text-pink-400 transition-colors">contact@cadamen.com</p>
+                                        <p className="text-white font-medium text-lg hover:text-green-400 transition-colors">contact@aibunt.com</p>
                                     </div>
                                 </div>
                                 <a
@@ -55,12 +55,12 @@ const Contact = () => {
                                     rel="noopener noreferrer"
                                     className="flex items-start gap-5 group/item cursor-pointer"
                                 >
-                                    <div className="p-3.5 rounded-xl bg-[#1e293b] text-pink-500 group-hover/item:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
+                                    <div className="p-3.5 rounded-xl bg-[#1e293b] text-green-500 group-hover/item:scale-110 transition-transform duration-300 shadow-lg shadow-black/50">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                     </div>
                                     <div>
                                         <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-1">Location</p>
-                                        <p className="text-white font-medium text-lg group-hover/item:text-pink-400 transition-colors">People Tech Group, HITEC City, Hyderabad</p>
+                                        <p className="text-white font-medium text-lg group-hover/item:text-green-400 transition-colors">People Tech Group, HITEC City, Hyderabad</p>
                                     </div>
                                 </a>
                             </div>
@@ -125,7 +125,7 @@ const Contact = () => {
                                 />
                             </div>
 
-                            <button className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-pink-500/20 hover:shadow-pink-500/40 transform hover:-translate-y-1 transition-all duration-300 mt-2 flex items-center justify-center gap-2 group">
+                            <button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transform hover:-translate-y-1 transition-all duration-300 mt-2 flex items-center justify-center gap-2 group">
                                 <span>Send Message</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                             </button>

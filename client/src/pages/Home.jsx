@@ -23,7 +23,7 @@ const Home = () => {
 
   const services = [
     { icon: <Globe size={22} />, image: "/images/web_dev.png", title: "Web & Platforms", desc: "Custom websites and powerful service platforms tailored to your expectations.", color: 'var(--accent)' },
-    { icon: <Cpu size={22} />, image: "/images/mobile_app.png", title: "Mobile Apps", desc: "High-quality smartphone applications designed directly for the Playstore.", color: '#8B5CF6' },
+    { icon: <Cpu size={22} />, image: "/images/mobile_app.png", title: "Mobile Apps", desc: "High-quality smartphone applications designed directly for the Playstore.", color: '#5A8424' },
     { icon: <Zap size={22} />, image: "/images/ai_models.png", title: "AI Integration", desc: "Embedding intelligent, bespoke AI models directly into your systems.", color: '#F59E0B' },
     { icon: <Shield size={22} />, image: "/images/mechanical.png", title: "Mechanical Automation", desc: "Cutting-edge mechanical design and intelligent software automation.", color: '#10B981' },
   ];
@@ -131,7 +131,7 @@ const Home = () => {
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4" style={{ color: 'var(--text-primary)' }}>
             Core <span className="gradient-text">Capabilities</span>
           </h2>
-          <div className="w-16 h-1 mx-auto rounded-full" style={{ background: 'linear-gradient(90deg, var(--accent), #8B5CF6)' }} />
+          <div className="w-16 h-1 mx-auto rounded-full" style={{ background: 'linear-gradient(90deg, var(--accent), var(--accent-teal))' }} />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -218,7 +218,7 @@ const Home = () => {
             animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-0 left-0 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
-            style={{ background: '#8B5CF6' }}
+            style={{ background: 'var(--accent-teal)' }}
           />
           <motion.div
             animate={{ y: [0, 40, 0], x: [0, -30, 0], scale: [1, 1.2, 1] }}
@@ -255,7 +255,7 @@ const Home = () => {
           </motion.div>
 
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-50" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent opacity-50" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[var(--accent-teal)] to-transparent opacity-50" />
         </div>
       </section>
     </motion.div>

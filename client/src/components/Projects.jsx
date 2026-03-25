@@ -36,7 +36,7 @@ const Projects = () => {
           Portfolio
         </div>
         <h2 className="text-4xl md:text-5xl font-[1000] uppercase tracking-tighter" style={{ color: 'var(--text-primary)' }}>
-          Featured <span style={{ color: '#8B5CF6' }}>Projects</span>
+          Featured <span className="gradient-text">Projects</span>
         </h2>
       </motion.div>
 

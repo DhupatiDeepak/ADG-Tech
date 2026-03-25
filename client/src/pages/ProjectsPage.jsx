@@ -30,7 +30,7 @@ const ProjectsPage = () => {
             animate={{ y: [0, -30, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-0 left-0 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
-            style={{ background: '#8B5CF6' }}
+            style={{ background: 'var(--accent-teal)' }}
           />
           <motion.div
             animate={{ y: [0, 40, 0], x: [0, -30, 0], scale: [1, 1.2, 1] }}
@@ -67,7 +67,7 @@ const ProjectsPage = () => {
           </motion.div>
 
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-50" />
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[#8B5CF6] to-transparent opacity-50" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-[var(--accent-teal)] to-transparent opacity-50" />
         </div>
       </section>
     </motion.div>
