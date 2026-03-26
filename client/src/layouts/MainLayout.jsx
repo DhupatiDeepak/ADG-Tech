@@ -77,12 +77,6 @@ const MainLayout = ({ children }) => {
                 </div>
               </div>
 
-              <div className="p-4 rounded-2xl" style={{ background: 'var(--bg-primary)', border: '1px solid var(--border-color)' }}>
-                <span className="text-[10px] uppercase tracking-widest font-bold block mb-1" style={{ color: 'var(--text-muted)' }}>Tagline</span>
-                <p className="text-sm font-black italic tracking-wide" style={{ color: 'var(--text-primary)' }}>
-                  Aibunt – Where Engineering Meets Artificial Intelligence
-                </p>
-              </div>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 w-full lg:w-auto">

@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
 import CursorGlow from './components/CursorGlow';
 import ProjectsPage from './pages/ProjectsPage';
+import ScrollProgress from './components/ScrollProgress';
 
 const App = () => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const App = () => {
       className="min-h-screen font-sans"
       style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
     >
+      <ScrollProgress />
       <Toaster
         position="top-center"
         toastOptions={{
