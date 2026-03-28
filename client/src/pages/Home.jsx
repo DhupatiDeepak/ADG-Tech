@@ -45,7 +45,7 @@ const Home = () => {
       {/* 1. HERO SECTION */}
       <motion.section 
         style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-        className="relative h-screen flex items-center justify-center overflow-hidden z-10"
+        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden z-10"
       >
         <motion.div 
           variants={containerVariants}
@@ -87,7 +87,7 @@ const Home = () => {
       </motion.section>
 
       {/* 2. CORE CAPABILITIES (Bento Grid) */}
-      <section className="py-24 relative z-10">
+      <section className="py-16 relative z-10">
         <div className="container mx-auto px-6 mb-16 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -105,14 +105,14 @@ const Home = () => {
             <motion.div 
               whileInView={{ opacity: 1, scale: 1 }}
               initial={{ opacity: 0, scale: 0.95 }}
-              className="bento-item bento-item-1 p-10 flex flex-col justify-between group cursor-pointer"
+              className="bento-item bento-item-1 p-8 flex flex-col justify-start gap-4 group cursor-pointer"
               onClick={() => navigate('/departments')}
             >
               <div className="relative z-10 text-left">
                 <div className="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-500 mb-6 border border-green-500/20">
                   <Globe size={28} />
                 </div>
-                <h3 className="text-3xl font-black uppercase mb-4 tracking-tighter">Web & Platforms</h3>
+                <h3 className="text-2xl font-black uppercase mb-2 tracking-tighter">Web & Platforms</h3>
                 <p className="text-lg opacity-70 leading-relaxed font-medium max-w-md">
                   High-performance web ecosystems designed for scale. From landing pages to complex SaaS platforms.
                 </p>
@@ -120,7 +120,7 @@ const Home = () => {
               <div className="absolute top-10 right-10 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Code size={120} />
               </div>
-              <div className="mt-10 flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-[var(--accent)] group-hover:gap-4 transition-all text-left">
+              <div className="mt-6 flex items-center gap-2 text-sm font-bold tracking-widest uppercase text-[var(--accent)] group-hover:gap-4 transition-all text-left">
                 Explore Tech <ArrowRight size={14} />
               </div>
             </motion.div>
@@ -129,7 +129,7 @@ const Home = () => {
             <motion.div 
               whileInView={{ opacity: 1, y: 0 }}
               initial={{ opacity: 0, y: 30 }}
-              className="bento-item bento-item-2 p-10 flex flex-col justify-between group cursor-pointer"
+              className="bento-item bento-item-2 p-8 flex flex-col justify-start gap-2 group cursor-pointer"
               onClick={() => navigate('/departments')}
             >
                 <div className="text-left">
@@ -180,7 +180,7 @@ const Home = () => {
 
 
       {/* 6. DISCOVERY NAVIGATION - ENHANCED */}
-      <section className="py-24 relative z-10 border-t border-[var(--border-color)]">
+      <section className="py-16 relative z-10 border-t border-[var(--border-color)]">
         <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             { title: "About Bunt", path: "/about", desc: "Our vision & mission", icon: <Globe size={20} /> },
@@ -206,7 +206,7 @@ const Home = () => {
       </section>
 
       {/* 7. ENHANCED CONTACT CTA - COMPACT VERSION */}
-      <section className="py-20 relative z-10 container mx-auto px-6 max-w-5xl">
+      <section className="py-16 relative z-10 container mx-auto px-6 max-w-5xl">
         <motion.div 
           whileHover={{ scale: 1.005 }}
           className="rounded-[3rem] bg-[var(--bg-card)] border border-[var(--border-color)] p-12 md:p-20 text-center relative overflow-hidden group shadow-2xl"
@@ -231,7 +231,7 @@ const Home = () => {
           </div>
           
           <div className="absolute -bottom-20 -right-20 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
-             <MechanicalGear size={400} speed={0.2} />
+             <MechanicalGear size={400} speed={0.8} />
           </div>
         </motion.div>
       </section>

@@ -61,7 +61,7 @@ const itemVariants = {
 
 const AboutPage = () => {
   return (
-    <div className="pt-32 pb-20 overflow-x-hidden">
+    <div className="pt-24 pb-16 overflow-x-hidden">
       <div className="container mx-auto px-6">
 
         {/* ── HERO ── */}
@@ -69,7 +69,7 @@ const AboutPage = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-24 max-w-5xl mx-auto"
+          className="text-center mb-16 max-w-5xl mx-auto"
         >
           <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.5em] mb-6 block">
             About AI Bunt
@@ -88,29 +88,32 @@ const AboutPage = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-28 rounded-[3rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-12 md:p-20 relative overflow-hidden"
+          className="mb-20 rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-10 md:p-12 relative overflow-hidden shadow-2xl"
         >
           <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ background: 'radial-gradient(circle at 80% 20%, var(--accent), transparent 60%)' }} />
-          <div className="relative z-10 flex flex-col md:flex-row gap-16 items-start">
+          <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
             <div className="flex-1">
-              <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-6 block">Our Identity</span>
-              <h2 className="text-4xl md:text-6xl font-[1000] uppercase tracking-tighter mb-8 leading-none">Who We Are</h2>
-              <p className="text-lg opacity-70 font-medium leading-relaxed mb-6">
+              <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Our Identity</span>
+              <h2 className="text-4xl md:text-6xl font-[1000] uppercase tracking-tighter mb-6 leading-none">Who We Are</h2>
+              <p className="text-base opacity-70 font-medium leading-relaxed mb-6">
                 AI Bunt brings together three core engineering disciplines under one roof. Our team of <strong className="text-[var(--accent)]">mechanical engineers, AI/ML engineers and full-stack developers</strong> collaborate to design, build and intelligence-enable industrial and digital systems.
               </p>
-              <p className="text-lg opacity-70 font-medium leading-relaxed">
+              <p className="text-base opacity-70 font-medium leading-relaxed">
                 We don't just write code or draw parts — we engineer complete solutions. From a precision gear to a smart ML pipeline, every deliverable carries the same standard of engineering excellence.
               </p>
             </div>
-            <div className="flex-1 grid grid-cols-1 gap-6">
+            <div className="flex-1 grid grid-cols-1 gap-4">
               {[
                 { label: "Mechanical Engineering", val: "Precision components, CAD/CAM, quality inspection" },
                 { label: "AI & ML", val: "Neural models, vision systems, intelligent automation" },
                 { label: "Full-Stack Software", val: "Web platforms, APIs, cloud architecture, ECD" }
               ].map((item, i) => (
-                <div key={i} className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)]/40 hover:border-[var(--accent)]/40 transition-colors">
-                  <h4 className="text-xs font-black uppercase tracking-widest text-[var(--accent)] mb-2">0{i+1} — {item.label}</h4>
-                  <p className="text-sm font-bold opacity-60">{item.val}</p>
+                <div key={i} className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)]/40 hover:border-[var(--accent)]/40 transition-colors flex items-center gap-4">
+                  <div className="text-lg font-[1000] opacity-20">0{i+1}</div>
+                  <div>
+                    <h4 className="text-[11px] font-[1000] uppercase tracking-widest text-[var(--accent)] mb-1">{item.label}</h4>
+                    <p className="text-sm font-bold opacity-60 leading-tight">{item.val}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -118,7 +121,7 @@ const AboutPage = () => {
         </motion.div>
 
         {/* ── CAPABILITIES GRID ── */}
-        <div className="mb-28">
+        <div className="mb-20">
           <div className="text-center mb-16">
             <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Full Spectrum</span>
             <h2 className="text-5xl md:text-7xl font-[1000] uppercase tracking-tighter mb-4">What We <span className="gradient-text">Do</span></h2>
@@ -133,14 +136,14 @@ const AboutPage = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent)]/50 hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden"
+                className="p-8 rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] hover:border-[var(--accent)]/50 hover:-translate-y-1 transition-all duration-500 group relative overflow-hidden shadow-xl"
               >
-                <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-5 blur-2xl" style={{ background: cap.color }} />
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border transition-all group-hover:scale-110" style={{ background: `${cap.color}15`, color: cap.color, borderColor: `${cap.color}30` }}>
-                  {cap.icon}
+                <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-5 blur-2xl flex-shrink-0" style={{ background: cap.color }} />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 border transition-all group-hover:scale-110" style={{ background: `${cap.color}12`, color: cap.color, borderColor: `${cap.color}20` }}>
+                  {React.cloneElement(cap.icon, { size: 24 })}
                 </div>
-                <h3 className="text-lg font-black uppercase tracking-tighter mb-3">{cap.title}</h3>
-                <p className="text-sm opacity-60 font-medium leading-relaxed mb-5">{cap.desc}</p>
+                <h3 className="text-lg font-[1000] uppercase tracking-tighter mb-2">{cap.title}</h3>
+                <p className="text-sm opacity-60 font-medium leading-relaxed mb-5 min-h-[3rem]">{cap.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {cap.tags.map((tag, t) => (
                     <span key={t} className="text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-lg" style={{ background: `${cap.color}12`, color: cap.color }}>
@@ -158,7 +161,7 @@ const AboutPage = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-28"
+          className="mb-20"
         >
           <div className="text-center mb-16">
             <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Our Secret Weapon</span>
@@ -173,12 +176,12 @@ const AboutPage = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15 }}
-                className="p-10 rounded-3xl border border-[var(--border-color)] bg-[var(--bg-card)] text-center hover:border-[var(--accent)]/40 transition-all group hover:-translate-y-2 duration-500"
+                className="p-8 rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] text-center hover:border-[var(--accent)]/40 transition-all group hover:-translate-y-1 duration-500 flex flex-col items-center justify-center min-h-[300px] shadow-lg"
               >
-                <div className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center mx-auto mb-6 transition-all group-hover:scale-110" style={{ background: `${member.color}15`, color: member.color, border: `1px solid ${member.color}30` }}>
-                  {member.icon}
+                <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center mb-6 transition-all group-hover:scale-110" style={{ background: `${member.color}12`, color: member.color, border: `1px solid ${member.color}20` }}>
+                  {React.cloneElement(member.icon, { size: 30 })}
                 </div>
-                <h3 className="text-lg font-black uppercase tracking-tighter mb-3">{member.title}</h3>
+                <h3 className="text-lg font-[1000] uppercase tracking-tighter mb-3">{member.title}</h3>
                 <p className="text-sm opacity-60 font-medium leading-relaxed">{member.desc}</p>
               </motion.div>
             ))}
@@ -190,7 +193,7 @@ const AboutPage = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="mb-28 rounded-[3rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-12 md:p-20"
+          className="mb-20 rounded-[3rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-12 md:p-14"
         >
           <div className="text-center mb-12">
             <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Our Edge</span>

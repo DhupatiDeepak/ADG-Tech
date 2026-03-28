@@ -23,20 +23,28 @@ const MainLayout = ({ children }) => {
              style={{ background: 'var(--blob-3)', animationDelay: '4s' }} />
 
         {/* Dynamic Gears */}
-        <div className="absolute -top-20 -left-20 opacity-[0.08]">
-          <MechanicalGear size={600} speed={0.1} color="var(--accent)" />
+        <div className="absolute -top-12 -left-12 md:-top-20 md:-left-20 opacity-[0.08]">
+          <MechanicalGear size={600} speed={0.4} color="var(--accent)" />
         </div>
-        <div className="absolute top-1/2 -right-32 transform -translate-y-1/2 opacity-[0.1]">
-          <MechanicalGear size={800} speed={0.05} reverse color="var(--accent)" />
+        
+        {/* Gear 2: Mobile Bottom-Right */}
+        <div className="absolute bottom-20 -right-20 opacity-[0.1] md:hidden">
+          <MechanicalGear size={400} speed={0.2} reverse color="var(--accent)" />
         </div>
-        <div className="absolute -bottom-40 left-1/4 opacity-[0.08]">
-          <MechanicalGear size={500} speed={0.15} color="var(--accent)" />
+        
+        {/* Gear 2: Desktop Middle-Right */}
+        <div className="absolute top-1/2 -right-40 transform -translate-y-1/2 opacity-[0.1] hidden md:block">
+          <MechanicalGear size={800} speed={0.2} reverse color="var(--accent)" />
+        </div>
+
+        <div className="absolute -bottom-40 left-1/4 opacity-[0.08] hidden md:block">
+          <MechanicalGear size={500} speed={0.6} color="var(--accent)" />
         </div>
       </div>
 
       <GlassNavbar />
 
-      <main className="flex-grow relative z-10">
+      <main className="flex-grow relative z-10 pt-12">
         {children}
       </main>
 
@@ -47,10 +55,10 @@ const MainLayout = ({ children }) => {
         {/* Background Decor */}
         <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
            <div className="absolute top-10 -left-20">
-              <MechanicalGear size={400} speed={0.2} color="var(--accent)" />
+              <MechanicalGear size={400} speed={0.8} color="var(--accent)" />
            </div>
            <div className="absolute bottom-10 -right-20 opacity-50">
-              <MechanicalGear size={300} speed={0.1} reverse color="var(--accent)" />
+              <MechanicalGear size={300} speed={0.4} reverse color="var(--accent)" />
            </div>
         </div>
 

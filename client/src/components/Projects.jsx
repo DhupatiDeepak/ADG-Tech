@@ -22,7 +22,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Godavari Ruchulu",
+    title: "Ronanki Hot Chips",
     subtitle: "Food Supply Web Application",
     desc: "A full-stack food supply platform for delivering homemade snacks and traditional Indian food items with an online ordering system.",
     img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1400",
@@ -94,61 +94,61 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Content */}
-        <div className="lg:w-3/5 p-8 md:p-12 flex flex-col justify-center gap-5">
+        <div className="lg:w-3/5 p-8 md:p-10 flex flex-col justify-center gap-4">
 
           {/* Title row */}
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.35em] mb-1.5 block" style={{ color: project.color }}>
+              <span className="text-[10px] font-[1000] uppercase tracking-[0.4em] mb-1 block opacity-50" style={{ color: project.color }}>
                 {project.subtitle}
               </span>
-              <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter leading-tight">{project.title}</h3>
+              <h3 className="text-3xl md:text-4xl font-[1000] uppercase tracking-tighter leading-none">{project.title}</h3>
             </div>
             {project.link !== '#' ? (
               <a href={project.link} target="_blank" rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl border border-[var(--border-color)] flex items-center justify-center flex-shrink-0 hover:border-[var(--accent)] transition-all group/btn"
+                className="w-10 h-10 rounded-xl border border-[var(--border-color)] flex items-center justify-center flex-shrink-0 hover:border-[var(--accent)] transition-all group/btn"
                 style={{ color: 'var(--text-secondary)' }}>
-                <ArrowUpRight size={20} className="transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" style={{ color: project.color }} />
+                <ArrowUpRight size={18} className="transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" style={{ color: project.color }} />
               </a>
             ) : (
-              <span className="text-[9px] font-black uppercase tracking-widest px-3 py-2 rounded-xl border border-[var(--border-color)] opacity-40 flex-shrink-0">
+              <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xl border border-[var(--border-color)] opacity-40 flex-shrink-0">
                 Soon
               </span>
             )}
           </div>
 
           {/* Description */}
-          <p className="text-base opacity-60 font-medium leading-relaxed">{project.desc}</p>
+          <p className="text-sm opacity-60 font-medium leading-relaxed max-w-xl">{project.desc}</p>
 
-          {/* Stack badges — in content area */}
+          {/* Stack badges */}
           <div className="flex flex-wrap gap-2">
             {project.stack.map((tech, i) => (
-              <span key={i} className="text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg"
-                style={{ background: `${project.color}15`, color: project.color, border: `1px solid ${project.color}30` }}>
+              <span key={i} className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg"
+                style={{ background: `${project.color}12`, color: project.color, border: `1px solid ${project.color}20` }}>
                 {tech}
               </span>
             ))}
           </div>
 
-          {/* Features — always visible */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Features — more compact */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 py-2 border-y border-white/5">
             {project.features.map((f, i) => (
               <div key={i} className="flex items-start gap-3">
-                <CheckCircle size={15} className="flex-shrink-0 mt-0.5" style={{ color: project.color }} />
+                <CheckCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: project.color }} />
                 <div>
-                  <p className="text-sm font-black uppercase tracking-wide leading-tight">{f.label}</p>
-                  <p className="text-xs opacity-45 font-medium mt-0.5 leading-relaxed">{f.detail}</p>
+                  <p className="text-[11px] font-black uppercase tracking-wide leading-tight">{f.label}</p>
+                  <p className="text-[10px] opacity-40 font-medium mt-0.5 leading-tight">{f.detail}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Live link */}
+          {/* Live link — compact scale */}
           {project.link !== '#' && (
             <a href={project.link} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-sm font-black uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 w-fit shadow-xl"
-              style={{ background: `${project.color}15`, color: project.color, border: `2px solid ${project.color}60` }}>
-              <Globe size={18} /> EXPLORE LIVE PROJECT
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-[11px] font-[1000] uppercase tracking-[0.2em] transition-all hover:scale-105 active:scale-95 w-fit shadow-lg mt-2"
+              style={{ background: `${project.color}15`, color: project.color, border: `1px solid ${project.color}40` }}>
+              <Globe size={14} /> EXPLORE LIVE PROJECT
             </a>
           )}
         </div>
@@ -159,7 +159,7 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   return (
-    <section className="pt-32 pb-20">
+    <section className="pt-24 pb-16">
       <div className="container mx-auto px-6">
 
         {/* Header */}
@@ -167,7 +167,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">
             Our Work

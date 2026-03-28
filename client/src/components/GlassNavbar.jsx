@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Layout, Mail, Settings, Globe, Menu, X, Sun, Moon, ChevronDown, ChevronRight, Wrench, Factory, ScanLine, BrainCircuit, Bot, Code, CircuitBoard } from 'lucide-react';
+import { Home, Layout, Mail, Settings, Globe, Menu, X, Sun, Moon, ChevronDown, ChevronRight, Wrench, Factory, ScanLine, BrainCircuit, Bot, Code, CircuitBoard, Bike } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import logo from '../assets/aibunt_logo.png';
 
@@ -18,6 +18,18 @@ const GlassNavbar = () => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
+  // Lock body scroll when mobile menu is open
+  React.useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const navItems = [
     { name: 'Home', path: '/', icon: <Home size={15} /> },
     { name: 'About Us', path: '/about', icon: <Globe size={15} /> },
@@ -32,6 +44,7 @@ const GlassNavbar = () => {
           color: '#85b53d',
           subItems: [
             { name: 'Mechanical Design', id: 'mechanical', icon: <Wrench size={16}/>, desc: 'CAD/CAM, Reverse Engineering, DFM' },
+            { name: 'Electric Bike Design', id: 'ebike', icon: <Bike size={16}/>, desc: 'e-Bike Design, CATIA, CAD Modeling' },
             { name: 'Manufacturing & Fabrication', id: 'manufacturing', icon: <Factory size={16}/>, desc: 'Vendor platform, production & assembly' },
             { name: 'Inspection & Quality with AI', id: 'inspection', icon: <ScanLine size={16}/>, desc: 'AI visual inspection & QA docs' }
           ]
@@ -260,96 +273,149 @@ const GlassNavbar = () => {
 
           {/* Mobile UI */}
           <div className="md:hidden flex items-center gap-2">
-            <motion.button onClick={toggleTheme} className="theme-toggle" whileTap={{ scale: 0.85 }}>
-              {isDark ? <Sun size={15} /> : <Moon size={15} />}
-            </motion.button>
             <button
-              className="p-2 rounded-full transition-all duration-200"
-              style={{ color: 'var(--text-primary)', background: 'var(--accent-soft)' }}
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2.5 rounded-full transition-all duration-300"
+              style={{ color: 'var(--text-primary)', background: 'var(--accent-soft)', border: '1px solid var(--border-color)' }}
+              onClick={() => setIsMobileMenuOpen(true)}
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              <Menu size={22} />
             </button>
           </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Content */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden rounded-b-2xl"
-              style={{ borderTop: '1px solid var(--border-color)', background: 'var(--bg-card)' }}
-            >
-              <div className="flex flex-col p-3 gap-1">
-                {navItems.map((item) => (
-                  <div key={item.path} className="flex flex-col">
-                    <Link
+      {/* Mobile Menu Overlay - Moved outside to escape parent transforms */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[9999] md:hidden flex flex-col overflow-hidden"
+            style={{ 
+              backgroundColor: 'var(--bg-primary)', 
+              padding: '1.25rem',
+              height: '100dvh', // Use dynamic viewport height
+              width: '100vw'
+            }}
+          >
+            {/* Header inside mobile menu */}
+            <div className="flex items-center justify-between mb-6 px-1">
+              <Link to="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                <img src={logo} alt="Logo" className="h-14 w-auto object-contain logo-blend" />
+              </Link>
+              <div className="flex items-center gap-3">
+                <motion.button 
+                  onClick={toggleTheme} 
+                  className="theme-toggle" 
+                  style={{ width: '2.5rem', height: '2.5rem' }}
+                  whileTap={{ scale: 0.85 }}
+                >
+                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
+                </motion.button>
+                <button
+                  className="p-2 rounded-full transition-all duration-300"
+                  style={{ 
+                    color: 'var(--text-primary)', 
+                    background: 'var(--accent-soft)', 
+                    border: '1px solid var(--border-color)', 
+                    width: '2.5rem', 
+                    height: '2.5rem', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center' 
+                  }}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <X size={22} />
+                </button>
+              </div>
+            </div>
+
+            {/* Menu Items List */}
+            <div className="flex flex-col gap-2 overflow-y-auto px-1 pb-6 custom-scrollbar flex-grow">
+              {navItems.map((item) => (
+                <div key={item.path} className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                     <Link
                       to={item.path}
                       onClick={() => !item.isMegaMenu && setIsMobileMenuOpen(false)}
-                      className="flex items-center justify-between p-3 rounded-xl font-bold uppercase tracking-widest text-[11px]"
+                      className="flex-grow flex items-center gap-4 p-3.5 rounded-2xl font-black uppercase tracking-[0.2em] text-[12.5px] transition-all active:scale-[0.98]"
                       style={{ 
                         color: isActive(item.path) ? 'var(--accent)' : 'var(--text-primary)',
-                        background: isActive(item.path) ? 'var(--accent-soft)' : 'transparent'
+                        background: isActive(item.path) ? 'var(--accent-soft)' : 'var(--bg-card)',
+                        border: isActive(item.path) ? '1px solid var(--accent)' : '1px solid var(--border-color)',
+                        boxShadow: isActive(item.path) ? 'var(--shadow-accent)' : 'var(--shadow-sm)'
                       }}
                     >
-                      <span className="flex items-center gap-3">{item.icon} {item.name}</span>
-                      {item.isMegaMenu && (
-                        <ChevronDown 
-                          size={14} 
-                          className={`transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setOpenDropdown(openDropdown === item.name ? null : item.name);
-                          }}
-                        />
-                      )}
+                      <span className="flex-shrink-0" style={{ color: 'var(--accent)' }}>
+                        {React.cloneElement(item.icon, { size: 20 })}
+                      </span>
+                      {item.name}
                     </Link>
                     
-                    {/* Mobile Dropdown Sub-Items */}
-                    <AnimatePresence>
-                      {item.isMegaMenu && openDropdown === item.name && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="flex flex-col pl-8 gap-1 overflow-hidden"
-                        >
-                          {item.columns.map((col, idx) => (
-                            <div key={idx} className="py-2">
-                              <div className="text-[9px] font-black opacity-40 uppercase tracking-widest mb-1">{col.title}</div>
-                              {col.subItems.map((sub, sIdx) => (
-                                <Link
-                                  key={sIdx}
-                                  to={item.path}
-                                  onClick={() => setIsMobileMenuOpen(false)}
-                                  className="block py-1.5 text-[11px] font-bold text-[var(--text-secondary)]"
-                                >
-                                  {sub}
-                                </Link>
-                              ))}
-                            </div>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                    {item.isMegaMenu && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setOpenDropdown(openDropdown === item.name ? null : item.name);
+                        }}
+                        className="p-3.5 rounded-2xl transition-all"
+                        style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)', color: 'var(--text-muted)' }}
+                      >
+                        <ChevronDown 
+                          size={16} 
+                          className={`transition-transform duration-300 ${openDropdown === item.name ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                    )}
                   </div>
-                ))}
-                <Link
-                  to="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="mt-2 p-3 rounded-xl text-white font-bold uppercase tracking-widest text-[11px] flex items-center justify-center gap-2"
-                  style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-teal))' }}
-                >
-                  <Mail size={15} /> Contact Us
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+                  
+                  <AnimatePresence>
+                    {item.isMegaMenu && openDropdown === item.name && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="flex flex-col pl-4 mt-1.5 gap-1.5 overflow-hidden"
+                      >
+                        {item.columns.map(col => col.subItems).flat().map((sub, sIdx) => (
+                          <Link
+                            key={sIdx}
+                            to={`/departments#${sub.id}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex items-center gap-3 p-3 rounded-xl text-[11px] font-bold text-[var(--text-secondary)] transition-all active:bg-[var(--accent-soft)]"
+                            style={{ background: 'var(--bg-card)', border: '1px solid var(--border-color)' }}
+                          >
+                            <span className="opacity-60">{React.cloneElement(sub.icon, { size: 14 })}</span>
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+
+            {/* Action Button at bottom */}
+            <div className="mt-auto pt-4 px-1">
+              <Link
+                to="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full p-4.5 rounded-[1.25rem] text-white font-black uppercase tracking-[0.2em] text-[13px] flex items-center justify-center gap-3 transition-all active:scale-[0.98]"
+                style={{ 
+                  background: 'linear-gradient(135deg, var(--accent), #4D7321)',
+                  boxShadow: '0 10px 25px -10px rgba(133, 181, 61, 0.4)'
+                }}
+              >
+                <Mail size={18} /> CONTACT US
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

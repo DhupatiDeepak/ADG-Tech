@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings, Cpu, Code, ArrowRight, ChevronDown, ChevronUp, Factory, ScanLine, CircuitBoard, Bot } from "lucide-react";
+import { Settings, Cpu, Code, ArrowRight, ChevronDown, ChevronUp, Factory, ScanLine, CircuitBoard, Bot, Bike } from "lucide-react";
 
 const departments = [
   {
@@ -17,6 +17,22 @@ const departments = [
       { name: "GD&T & Tolerancing", detail: "Precise dimensional specifications" },
       { name: "Design for Manufacturing (DFM)", detail: "Cost-effective, machinable designs" },
       { name: "Assembly Drawings", detail: "BOM, exploded views, technical documentation" }
+    ]
+  },
+  {
+    id: "ebike",
+    icon: <Bike size={36}/>,
+    color: "#D946EF",
+    title: "Electric Bike Design",
+    subtitle: "Modern e-Bike Engineering",
+    desc: "Complete end-to-end design and engineering for electric mobility. We specialize in e-bike chassis, battery integration, and high-performance component design using CATIA and SolidWorks.",
+    services: [
+      { name: "Chassis & Frame Design", detail: "Lightweight, high-strength frame geometry" },
+      { name: "Battery Pack Integration", detail: "Optimized spatial management for power cells" },
+      { name: "Drivetrain Engineering", detail: "Motor mounting and power transmission CAD" },
+      { name: "Component CAD (CATIA)", detail: "High-precision detailed design of all bike parts" },
+      { name: "Suspension Geometry", detail: "Dynamic analysis and mount point design" },
+      { name: "Prototyping & DFM", detail: "Manufacturing-ready drawings for batch production" }
     ]
   },
   {
@@ -143,8 +159,8 @@ const DeptCard = ({ dept }) => {
       className="rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] overflow-hidden group hover:border-[var(--accent)]/30 transition-all duration-500"
     >
       {/* Header */}
-      <div className="p-10 md:p-14">
-        <div className="flex flex-col md:flex-row gap-10 items-start">
+      <div className="p-8 md:p-10">
+        <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Icon + Title */}
           <div className="flex-shrink-0">
             <div className="w-20 h-20 rounded-[1.5rem] flex items-center justify-center mb-6 transition-transform group-hover:scale-110 duration-500"
@@ -157,10 +173,10 @@ const DeptCard = ({ dept }) => {
 
           {/* Desc + Toggle */}
           <div className="flex-1">
-            <p className="text-base opacity-60 font-medium leading-relaxed mb-8 max-w-2xl">{dept.desc}</p>
+            <p className="text-base opacity-60 font-medium leading-relaxed mb-6 max-w-2xl">{dept.desc}</p>
 
             {/* Service Tags Preview */}
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-2 mb-4">
               {dept.services.slice(0, 4).map((s, i) => (
                 <span key={i} className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
                   style={{ background: `${dept.color}12`, color: dept.color }}>
@@ -196,7 +212,7 @@ const DeptCard = ({ dept }) => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-10 md:px-14 pb-14 border-t border-[var(--border-color)]">
+            <div className="px-8 md:px-10 pb-10 border-t border-[var(--border-color)]">
               <p className="text-[9px] font-black uppercase tracking-[0.3em] opacity-40 mt-8 mb-6">Complete Service List</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {dept.services.map((service, idx) => (
@@ -224,16 +240,34 @@ const DeptCard = ({ dept }) => {
   );
 };
 
+const sections = [
+  {
+    title: "Mechanical & Auto",
+    color: "#10B981",
+    ids: ["mechanical", "ebike", "manufacturing"]
+  },
+  {
+    title: "Artificial Intelligence",
+    color: "#85B53D",
+    ids: ["design-ai", "robotics", "inspection"]
+  },
+  {
+    title: "Software & Tech",
+    color: "#06B6D4",
+    ids: ["software", "ecd"]
+  }
+];
+
 const DepartmentsPage = () => {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-24 pb-16">
       <div className="container mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
             Specialized Business Units
@@ -246,10 +280,24 @@ const DepartmentsPage = () => {
           </p>
         </motion.div>
 
-        {/* Department Cards */}
-        <div className="space-y-8">
-          {departments.map((dept) => (
-            <DeptCard key={dept.id} dept={dept} />
+        {/* Sectioned Departments */}
+        <div className="space-y-24">
+          {sections.map((section, sIdx) => (
+            <div key={sIdx} className="space-y-12">
+              <div className="flex items-center gap-6">
+                <h3 className="text-[11px] font-[1000] uppercase tracking-[0.5em] whitespace-nowrap" style={{ color: section.color }}>
+                  {section.title}
+                </h3>
+                <div className="h-px w-full opacity-20" style={{ background: section.color }} />
+              </div>
+              
+              <div className="space-y-8">
+                {section.ids.map(id => {
+                  const dept = departments.find(d => d.id === id);
+                  return dept ? <DeptCard key={dept.id} dept={dept} /> : null;
+                })}
+              </div>
+            </div>
           ))}
         </div>
       </div>

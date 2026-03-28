@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden bg-transparent">
+    <section className="relative py-16 overflow-hidden bg-transparent">
       <div className="container mx-auto px-6 relative z-10">
 
         {/* Header */}
@@ -50,7 +50,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.5em] mb-4 block">
             Let's Connect

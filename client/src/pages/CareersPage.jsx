@@ -140,15 +140,15 @@ const JobCard = ({ job }) => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-10 md:p-14 hover:border-[var(--accent)]/30 transition-all duration-500 group relative overflow-hidden"
+        className="rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] p-8 md:p-10 hover:border-[var(--accent)]/30 transition-all duration-500 group relative overflow-hidden shadow-2xl"
       >
         <div className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-5 blur-3xl pointer-events-none" style={{ background: job.color }} />
 
-        <div className="flex flex-col md:flex-row gap-10 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 items-stretch">
           {/* Left info */}
-          <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-3 mb-5">
-              <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full animate-pulse" style={{ background: `${job.color}25`, color: job.color }}>
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="text-[9px] font-[1000] uppercase tracking-widest px-3 py-1.5 rounded-full animate-pulse" style={{ background: `${job.color}15`, color: job.color }}>
                 ● {job.badge}
               </span>
               <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-white/5 border border-white/10 flex items-center gap-1.5">
@@ -158,8 +158,8 @@ const JobCard = ({ job }) => {
                 <Clock size={10} /> {job.hours}
               </span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tighter mb-3">{job.title}</h3>
-            <p className="text-sm opacity-60 font-medium leading-relaxed mb-8 max-w-xl">{job.summary}</p>
+            <h3 className="text-3xl md:text-5xl font-[1000] uppercase tracking-tighter mb-4 leading-none">{job.title}</h3>
+            <p className="text-sm opacity-60 font-medium leading-relaxed mb-6 max-w-xl">{job.summary}</p>
 
             {/* Skills */}
             <div className="flex flex-col gap-4">
@@ -169,7 +169,7 @@ const JobCard = ({ job }) => {
                   <div className="flex flex-wrap gap-2">
                     {group.items.map((skill, si) => (
                       <span key={si} className="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-lg"
-                        style={group.label === 'Required' ? { background: `${job.color}15`, color: job.color } : { background: 'white/5', border: '1px solid rgba(255,255,255,0.08)', opacity: 0.7 }}>
+                        style={group.label === 'Required' ? { background: `${job.color}12`, color: job.color, border: `1px solid ${job.color}20` } : { background: 'white/5', border: '1px solid rgba(255,255,255,0.08)', opacity: 0.7 }}>
                         {skill}
                       </span>
                     ))}
@@ -180,14 +180,14 @@ const JobCard = ({ job }) => {
           </div>
 
           {/* Right CTA */}
-          <div className="flex flex-col gap-5 md:min-w-[240px]">
-            <div className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)]/60">
+          <div className="flex flex-col gap-4 lg:w-[300px] flex-shrink-0 justify-center">
+            <div className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)]/40">
               <p className="text-[9px] font-black uppercase tracking-widest opacity-40 mb-4">What You Get</p>
               <div className="flex flex-col gap-3">
                 {job.perks.map((perk, pi) => (
                   <div key={pi} className="flex items-center gap-3">
-                    <CheckCircle2 size={14} style={{ color: job.color }} className="flex-shrink-0" />
-                    <span className="text-xs font-bold">{perk}</span>
+                    <CheckCircle2 size={13} style={{ color: job.color }} className="flex-shrink-0" />
+                    <span className="text-xs font-bold leading-tight">{perk}</span>
                   </div>
                 ))}
               </div>
@@ -195,14 +195,14 @@ const JobCard = ({ job }) => {
 
             <a
               href={`mailto:info@aibunt.com?subject=Application for ${encodeURIComponent(job.title)}&body=Hi AI Bunt Team,%0A%0AI am interested in the ${job.title} role. Please find my resume attached.%0A%0AName:%0AExperience:%0APortfolio/GitHub:%0A%0ARegards`}
-              className="w-full py-4 rounded-2xl font-black uppercase text-xs tracking-[0.15em] flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-xl"
+              className="w-full py-4 rounded-2xl font-[1000] uppercase text-xs tracking-[0.2em] flex items-center justify-center gap-2 transition-all hover:scale-105 active:scale-95 shadow-xl"
               style={{ background: job.color, color: '#0A0F06' }}
             >
               Apply Now — Email Us <ChevronRight size={16} />
             </a>
             <p className="text-[9px] opacity-40 text-center font-bold uppercase tracking-widest leading-relaxed">
               Mail your resume to<br/>
-              <span className="text-[var(--accent)]" style={{color: job.color}}>info@aibunt.com</span>
+              <span style={{color: job.color}} className="font-black">info@aibunt.com</span>
             </p>
           </div>
         </div>
@@ -214,13 +214,13 @@ const JobCard = ({ job }) => {
 
 const CareersPage = () => {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-24 pb-16">
       <div className="container mx-auto px-6">
 
 
 
         {/* Job Listings */}
-        <div className="mb-16">
+        <div className="mb-10">
           <div className="flex items-center justify-between mb-10">
             <div>
               <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-2 block">Open Positions</span>

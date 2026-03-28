@@ -16,7 +16,7 @@ const MechanicalGear = ({ size = 100, color = 'var(--accent)', speed = 1, revers
       style={{ width: size, height: size }}
       animate={{ rotate: reverse ? -360 : 360 }}
       transition={{ 
-        duration: 20 / speed, 
+        duration: 12 / speed, 
         repeat: Infinity, 
         ease: "linear" 
       }}
