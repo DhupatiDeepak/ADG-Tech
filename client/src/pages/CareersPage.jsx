@@ -147,7 +147,7 @@ const JobCard = ({ job }) => {
         <div className="flex flex-col lg:flex-row gap-10 items-stretch">
           {/* Left info */}
           <div className="flex-1 flex flex-col justify-center">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="text-[9px] font-[1000] uppercase tracking-widest px-3 py-1.5 rounded-full animate-pulse" style={{ background: `${job.color}15`, color: job.color }}>
                 ● {job.badge}
               </span>
@@ -158,7 +158,7 @@ const JobCard = ({ job }) => {
                 <Clock size={10} /> {job.hours}
               </span>
             </div>
-            <h3 className="text-3xl md:text-5xl font-[1000] uppercase tracking-tighter mb-4 leading-none">{job.title}</h3>
+            <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-8 leading-none">{job.title}</h3>
             <p className="text-sm opacity-60 font-medium leading-relaxed mb-6 max-w-xl">{job.summary}</p>
 
             {/* Skills */}

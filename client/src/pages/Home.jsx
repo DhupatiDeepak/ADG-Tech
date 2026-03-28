@@ -197,7 +197,7 @@ const Home = () => {
                   {item.icon}
                 </div>
                 <div className="text-left">
-                  <h3 className="font-black uppercase text-[10px] tracking-[0.3em] mb-1">{item.title}</h3>
+                  <h3 className="font-black uppercase text-[12px] tracking-[0.4em] mb-3">{item.title}</h3>
                   <p className="text-[11px] font-bold opacity-40 group-hover:opacity-100 transition-opacity uppercase tracking-widest">{item.desc}</p>
                 </div>
              </Link>

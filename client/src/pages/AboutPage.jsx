@@ -93,8 +93,8 @@ const AboutPage = () => {
           <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ background: 'radial-gradient(circle at 80% 20%, var(--accent), transparent 60%)' }} />
           <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
             <div className="flex-1">
-              <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Our Identity</span>
-              <h2 className="text-4xl md:text-6xl font-[1000] uppercase tracking-tighter mb-6 leading-none">Who We Are</h2>
+              <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-6 block">Our Identity</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-8 leading-none">Who We Are</h2>
               <p className="text-base opacity-70 font-medium leading-relaxed mb-6">
                 AI Bunt brings together three core engineering disciplines under one roof. Our team of <strong className="text-[var(--accent)]">mechanical engineers, AI/ML engineers and full-stack developers</strong> collaborate to design, build and intelligence-enable industrial and digital systems.
               </p>
@@ -111,7 +111,7 @@ const AboutPage = () => {
                 <div key={i} className="p-6 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-primary)]/40 hover:border-[var(--accent)]/40 transition-colors flex items-center gap-4">
                   <div className="text-lg font-[1000] opacity-20">0{i+1}</div>
                   <div>
-                    <h4 className="text-[11px] font-[1000] uppercase tracking-widest text-[var(--accent)] mb-1">{item.label}</h4>
+                    <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-[var(--accent)] mb-2">{item.label}</h4>
                     <p className="text-sm font-bold opacity-60 leading-tight">{item.val}</p>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ const AboutPage = () => {
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 border transition-all group-hover:scale-110" style={{ background: `${cap.color}12`, color: cap.color, borderColor: `${cap.color}20` }}>
                   {React.cloneElement(cap.icon, { size: 24 })}
                 </div>
-                <h3 className="text-lg font-[1000] uppercase tracking-tighter mb-2">{cap.title}</h3>
+                <h3 className="text-lg font-black uppercase tracking-tight mb-2">{cap.title}</h3>
                 <p className="text-sm opacity-60 font-medium leading-relaxed mb-5 min-h-[3rem]">{cap.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {cap.tags.map((tag, t) => (
@@ -181,7 +181,7 @@ const AboutPage = () => {
                 <div className="w-16 h-16 rounded-[1.5rem] flex items-center justify-center mb-6 transition-all group-hover:scale-110" style={{ background: `${member.color}12`, color: member.color, border: `1px solid ${member.color}20` }}>
                   {React.cloneElement(member.icon, { size: 30 })}
                 </div>
-                <h3 className="text-lg font-[1000] uppercase tracking-tighter mb-3">{member.title}</h3>
+                <h3 className="text-lg font-black uppercase tracking-tight mb-3">{member.title}</h3>
                 <p className="text-sm opacity-60 font-medium leading-relaxed">{member.desc}</p>
               </motion.div>
             ))}

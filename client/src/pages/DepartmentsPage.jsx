@@ -167,8 +167,8 @@ const DeptCard = ({ dept }) => {
               style={{ background: `${dept.color}15`, color: dept.color, border: `1px solid ${dept.color}30` }}>
               {dept.icon}
             </div>
-            <span className="text-[9px] font-black uppercase tracking-[0.3em] opacity-40 block mb-1">{dept.subtitle}</span>
-            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter" style={{ color: 'var(--text-primary)' }}>{dept.title}</h2>
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] opacity-40 block mb-3">{dept.subtitle}</span>
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight" style={{ color: 'var(--text-primary)' }}>{dept.title}</h2>
           </div>
 
           {/* Desc + Toggle */}

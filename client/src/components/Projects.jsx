@@ -39,6 +39,22 @@ const projects = [
   },
   {
     id: 3,
+    title: "Medha Voice Assistant",
+    subtitle: "LLM-Based on Raspberry Pi",
+    desc: "Developed an AI voice assistant using an integrated LLM on Raspberry Pi with Raspberry Pi OS. Designed for IoT and smart assistant applications.",
+    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1400",
+    stack: ["Raspberry Pi OS", "Python", "LLM", "STT/TTS", "Systemd"],
+    color: "#C51A4A",
+    link: "#",
+    features: [
+      { label: "Voice Interaction", detail: "STT → LLM → TTS voice command flow." },
+      { label: "System Control", detail: "Executes basic tasks and queries." },
+      { label: "Background Automation", detail: "Uses systemd services for automation." },
+      { label: "IoT Integration", detail: "Designed for IoT and smart assistant applications." }
+    ]
+  },
+  {
+    id: 4,
     title: "Software Engineer Portfolio",
     subtitle: "Personal Developer Portfolio",
     desc: "A modern, SEO-optimized personal portfolio website built with Next.js, showcasing projects, skills, certifications, and achievements.",
@@ -54,14 +70,14 @@ const projects = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: "Doctor Research Portfolio",
     subtitle: "Medical Research Professional Platform",
     desc: "A professional portfolio platform for a research-oriented doctor, highlighting publications, achievements, and specializations with a clean structured UI.",
     img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1400",
     stack: ["React", "Next.js", "Node.js"],
     color: "#06B6D4",
-    link: "#",
+    link: "https://naresh-portfolio-kappa.vercel.app/",
     features: [
       { label: "Research Publications", detail: "Papers, journals, and studies listing." },
       { label: "Professional Profile", detail: "Experience, specialization and summary." },
@@ -69,6 +85,7 @@ const projects = [
       { label: "Online Presence", detail: "Boosts visibility in the research field." }
     ]
   }
+
 ];
 
 const ProjectCard = ({ project, index }) => {
@@ -99,10 +116,10 @@ const ProjectCard = ({ project, index }) => {
           {/* Title row */}
           <div className="flex items-start justify-between gap-4">
             <div>
-              <span className="text-[10px] font-[1000] uppercase tracking-[0.4em] mb-1 block opacity-50" style={{ color: project.color }}>
+              <span className="text-[10px] font-[1000] uppercase tracking-[0.4em] mb-3 block opacity-50" style={{ color: project.color }}>
                 {project.subtitle}
               </span>
-              <h3 className="text-3xl md:text-4xl font-[1000] uppercase tracking-tighter leading-none">{project.title}</h3>
+              <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight leading-none">{project.title}</h3>
             </div>
             {project.link !== '#' ? (
               <a href={project.link} target="_blank" rel="noopener noreferrer"
