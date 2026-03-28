@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import GlassNavbar from '../components/GlassNavbar';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
 import logo from '../assets/aibunt_logo.png';
+import MechanicalGear from '../components/MechanicalGear';
 
 const MainLayout = ({ children }) => {
   return (
@@ -10,115 +12,137 @@ const MainLayout = ({ children }) => {
       className="flex flex-col min-h-screen"
       style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
     >
+      {/* Global Background Decor */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        {/* Animated Blobs */}
+        <div className="absolute top-[10%] -left-[5%] w-[40vw] h-[40vw] rounded-full blur-[120px] opacity-[0.15] animate-pulse"
+             style={{ background: 'var(--blob-1)' }} />
+        <div className="absolute top-[40%] -right-[10%] w-[35vw] h-[35vw] rounded-full blur-[100px] opacity-[0.1] animate-pulse"
+             style={{ background: 'var(--blob-2)', animationDelay: '2s' }} />
+        <div className="absolute -bottom-[10%] left-[20%] w-[30vw] h-[30vw] rounded-full blur-[110px] opacity-[0.12] animate-pulse"
+             style={{ background: 'var(--blob-3)', animationDelay: '4s' }} />
+
+        {/* Dynamic Gears */}
+        <div className="absolute -top-20 -left-20 opacity-[0.08]">
+          <MechanicalGear size={600} speed={0.1} color="var(--accent)" />
+        </div>
+        <div className="absolute top-1/2 -right-32 transform -translate-y-1/2 opacity-[0.1]">
+          <MechanicalGear size={800} speed={0.05} reverse color="var(--accent)" />
+        </div>
+        <div className="absolute -bottom-40 left-1/4 opacity-[0.08]">
+          <MechanicalGear size={500} speed={0.15} color="var(--accent)" />
+        </div>
+      </div>
+
       <GlassNavbar />
 
-      <main className="flex-grow pt-32 px-6">
+      <main className="flex-grow relative z-10">
         {children}
       </main>
 
       <footer
-        className="py-16 mt-16"
+        className="py-24 mt-20 relative overflow-hidden"
         style={{ borderTop: '1px solid var(--border-color)', background: 'var(--bg-secondary)' }}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-32">
-            <div className="max-w-md">
-              <span className="text-xs uppercase tracking-[0.2em] font-black mb-6 block" style={{ color: 'var(--accent)' }}>
-                Contact Us
-              </span>
-              
-              <div className="flex flex-col items-start gap-4 mb-6">
-                <img 
-                  src={logo} 
-                  alt="AI Bunt Logo" 
-                  className="w-24 h-24 object-contain shadow-lg rounded-xl bg-white p-2" 
-                />
-                <div>
-                  <h2 className="text-xl md:text-2xl font-black tracking-tight leading-none" style={{ color: 'var(--text-primary)' }}>
-                    AI Bunt Technical Industrial
-                  </h2>
-                  <h2 className="text-xl md:text-2xl font-black tracking-tight leading-none mt-1" style={{ color: 'var(--text-primary)' }}>
-                    Services Pvt Ltd
-                  </h2>
-                </div>
+        {/* Background Decor */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none">
+           <div className="absolute top-10 -left-20">
+              <MechanicalGear size={400} speed={0.2} color="var(--accent)" />
+           </div>
+           <div className="absolute bottom-10 -right-20 opacity-50">
+              <MechanicalGear size={300} speed={0.1} reverse color="var(--accent)" />
+           </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            {/* Column 1: Branding */}
+            <div className="flex flex-col items-start gap-6">
+              <img 
+                src={logo} 
+                alt="AI Bunt Logo" 
+                className="w-24 h-24 object-contain logo-blend" 
+              />
+              <div>
+                <h2 className="text-xl font-black tracking-tighter leading-none mb-1 uppercase">AI Bunt Technical</h2>
+                <h2 className="text-xl font-black tracking-tighter leading-none uppercase opacity-80">Industrial Services</h2>
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold mt-4 opacity-40">Precision Engineering <br/> Since 2026</p>
               </div>
-
-              <div className="flex flex-col gap-4 mb-8">
-                <div className="flex items-center gap-3 text-sm font-semibold group cursor-default">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--bg-primary)] group-hover:bg-[var(--accent)] group-hover:text-white transition-all duration-300 shadow-[var(--shadow-sm)]" style={{ color: 'var(--accent)' }}>
-                    <Globe size={15} />
-                  </div>
-                  <span style={{ color: 'var(--text-muted)' }}>Website:</span>
-                  <a href="https://www.aibunt.com" target="_blank" rel="noreferrer" className="transition-colors hover:text-[var(--accent)]" style={{ color: 'var(--text-secondary)' }}>www.aibunt.com</a>
-                </div>
-
-                <div className="flex items-center gap-3 text-sm font-semibold group cursor-default">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--bg-primary)] group-hover:bg-[var(--accent)] group-hover:text-white transition-all duration-300 shadow-[var(--shadow-sm)]" style={{ color: 'var(--accent)' }}>
-                    <Mail size={15} />
-                  </div>
-                  <span style={{ color: 'var(--text-muted)' }}>Email:</span>
-                  <a href="mailto:info@aibunt.com" className="transition-colors hover:text-[var(--accent)]" style={{ color: 'var(--text-secondary)' }}>info@aibunt.com</a>
-                </div>
-
-                <div className="flex items-center gap-3 text-sm font-semibold group cursor-default">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--bg-primary)] group-hover:bg-[var(--accent)] group-hover:text-white transition-all duration-300 shadow-[var(--shadow-sm)]" style={{ color: 'var(--accent)' }}>
-                    <Phone size={15} />
-                  </div>
-                  <span style={{ color: 'var(--text-muted)' }}>Phone:</span>
-                  <a href="tel:+919951593345" className="transition-colors hover:text-[var(--accent)]" style={{ color: 'var(--text-secondary)' }}>+91 9951593345</a>
-                </div>
-
-                <div className="flex items-center gap-3 text-sm font-semibold group cursor-default">
-                  <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--bg-primary)] group-hover:bg-[var(--accent)] group-hover:text-white transition-all duration-300 shadow-[var(--shadow-sm)]" style={{ color: 'var(--accent)' }}>
-                    <MapPin size={15} />
-                  </div>
-                  <span style={{ color: 'var(--text-muted)' }}>Location:</span>
-                  <span style={{ color: 'var(--text-secondary)' }}>Hyderabad</span>
-                </div>
-              </div>
-
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 w-full lg:w-auto">
-              {[
-                { label: 'Social', links: ['Twitter', 'LinkedIn', 'GitHub'] },
-                { label: 'Company', links: ['About', 'Careers', 'Contact'] },
-                { label: 'Services', links: ['Web Dev', 'Mobile Apps', 'AI/ML'] },
-              ].map((col) => (
-                <div key={col.label} className="flex flex-col gap-3">
-                  <span className="text-[10px] uppercase tracking-widest font-bold mb-1" style={{ color: 'var(--accent)' }}>{col.label}</span>
-                  {col.links.map((link) => (
-                    <a
-                      key={link}
-                      href="#"
-                      className="text-sm font-medium transition-all duration-200 hover:translate-x-1"
-                      style={{ color: 'var(--text-secondary)' }}
-                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
-                    >
-                      {link}
+            {/* Column 2: Navigation & Services */}
+            <div className="grid grid-cols-2 gap-8">
+              <div className="flex flex-col gap-4">
+                 <span className="text-[10px] uppercase tracking-widest font-black text-[var(--accent)] mb-2">Company</span>
+                 {['About', 'Careers', 'Contact', 'Projects'].map(link => (
+                   <Link key={link} to={`/${link.toLowerCase()}`} className="text-sm font-bold opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all transform hover:translate-x-1 uppercase tracking-tighter">
+                     {link}
+                   </Link>
+                 ))}
+              </div>
+              <div className="flex flex-col gap-4">
+                 <span className="text-[10px] uppercase tracking-widest font-black text-[var(--accent)] mb-2">Departments</span>
+                 {['Mechanical & Auto', 'Artifical Intelligence', 'Software & Tech', 'Robotics & AI', 'Cloud Services'].map(item => (
+                   <Link 
+                     key={item} 
+                     to="/departments" 
+                     className="text-sm font-bold opacity-60 hover:opacity-100 hover:text-[var(--accent)] transition-all transform hover:translate-x-1 uppercase tracking-tighter"
+                   >
+                     {item}
+                   </Link>
+                 ))}
+              </div>
+            </div>
+
+            {/* Column 3: Contact Details */}
+            <div className="flex flex-col gap-10">
+               <div className="flex flex-col gap-6">
+                 <span className="text-[10px] uppercase tracking-widest font-black text-[var(--accent)] mb-2">Connect Now</span>
+                 <div className="flex flex-col gap-6">
+                    <a href="mailto:info@aibunt.com" className="flex items-center gap-4 group">
+                       <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[var(--bg-primary)] transition-all">
+                          <Mail size={18} />
+                       </div>
+                       <div className="flex flex-col">
+                          <span className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Email Address</span>
+                          <span className="text-sm font-black tracking-tight">info@aibunt.com</span>
+                       </div>
                     </a>
-                  ))}
-                </div>
-              ))}
+                    <a href="tel:+919951593345" className="flex items-center gap-4 group">
+                       <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[var(--bg-primary)] transition-all">
+                          <Phone size={18} />
+                       </div>
+                       <div className="flex flex-col">
+                          <span className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Phone Number</span>
+                          <span className="text-sm font-black tracking-tight">+91 9951593345</span>
+                       </div>
+                    </a>
+                    <div className="flex items-center gap-4 group cursor-default">
+                       <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--accent)]">
+                          <MapPin size={18} />
+                       </div>
+                       <div className="flex flex-col">
+                          <span className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Headquarters</span>
+                          <span className="text-sm font-black tracking-tight">Hyderabad, IN</span>
+                       </div>
+                    </div>
+                 </div>
+               </div>
             </div>
           </div>
 
           <div
-            className="mt-16 pt-10 flex flex-col md:flex-row justify-between items-center gap-6"
-            style={{ borderTop: '1px solid var(--border-color)' }}
+            className="mt-20 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-[var(--border-color)]"
           >
-            <p className="text-[10px] uppercase tracking-widest font-bold" style={{ color: 'var(--text-muted)' }}>
-              © 2026 AI Bunt. All rights reserved.
+            <p className="text-[9px] uppercase tracking-[0.4em] font-black opacity-30">
+              © 2026 AI Bunt. Absolute Precision Guaranteed.
             </p>
-            <div className="flex gap-8 text-[10px] uppercase tracking-widest font-bold" style={{ color: 'var(--text-muted)' }}>
-              {['Privacy Policy', 'Terms of Service'].map((item) => (
+            <div className="flex gap-10">
+              {['Privacy Policy', 'Terms'].map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="transition-colors duration-200"
-                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'}
+                  className="text-[9px] uppercase tracking-[0.3em] font-black opacity-30 hover:opacity-100 hover:text-[var(--accent)] transition-all"
                 >
                   {item}
                 </a>

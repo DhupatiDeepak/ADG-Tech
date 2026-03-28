@@ -7,7 +7,12 @@ import Home from './pages/Home';
 import MainLayout from './layouts/MainLayout';
 import CursorGlow from './components/CursorGlow';
 import ProjectsPage from './pages/ProjectsPage';
+import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import CareersPage from './pages/CareersPage';
+import DepartmentsPage from './pages/DepartmentsPage';
 import ScrollProgress from './components/ScrollProgress';
+import ScrollToTop from './components/ScrollToTop';
 
 const App = () => {
   const location = useLocation();
@@ -35,11 +40,16 @@ const App = () => {
         }}
       />
       <CursorGlow />
+      <ScrollToTop />
       <MainLayout>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/departments" element={<DepartmentsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </AnimatePresence>

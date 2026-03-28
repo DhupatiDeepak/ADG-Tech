@@ -1,131 +1,220 @@
-/* projects.css */
+/* projects.css overhaul */
 
 .projects-section {
-  padding: 80px 5%;
-  display: flex;
-  flex-direction: column;
-  gap: 80px;
+  padding: 80px 0;
   position: relative;
-  z-index: 10;
+  overflow: hidden;
 }
 
-/* CARD */
-.project-card {
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+.modern-project-card {
+  width: 100%;
+  position: relative;
+}
+
+.project-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  background: rgba(10, 15, 5, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(133, 181, 61, 0.15);
+  border-radius: 40px;
+  padding: 40px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-project-card:hover .project-card-inner {
+  border-color: rgba(133, 181, 61, 0.4);
+  box-shadow: 0 0 40px rgba(133, 181, 10, 0.05);
+  transform: translateY(-5px);
+}
+
+/* LEFT COLUMN */
+.project-media-col {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.main-image-wrapper {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.modern-project-card:hover .main-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+.project-meta-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.meta-badge {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-  padding: 30px;
-  border-radius: 20px;
-
-  /* Glassmorphism */
-  background: var(--bg-card);
-  backdrop-filter: blur(15px);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-md);
-  transition: all 0.4s ease;
+  gap: 15px;
 }
 
-/* Alternating Layout */
-.project-card.reverse {
-  flex-direction: row-reverse;
-}
-
-/* HOVER EFFECT */
-.project-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 0 30px var(--accent-soft);
-  border-color: var(--accent);
-}
-
-/* IMAGE CONTAINER */
-.project-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 15px;
-}
-
-.project-image img {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  border-radius: 15px;
-  transition: 0.5s ease;
-}
-
-/* IMAGE HOVER */
-.project-card:hover .project-image img {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-/* CONTENT */
-.project-content {
-  flex: 1;
-  max-width: 500px;
+.meta-info {
   display: flex;
   flex-direction: column;
 }
 
-.project-content h2 {
-  font-size: 36px;
+.meta-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.meta-value {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  opacity: 0.9;
+}
+
+/* RIGHT COLUMN */
+.project-info-col {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+}
+
+.project-title-large {
+  font-size: 48px;
   font-weight: 900;
-  color: var(--text-primary);
-  margin-bottom: 15px;
-  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
 }
 
-.project-content p {
-  color: var(--text-secondary);
-  font-size: 16px;
-  margin-bottom: 25px;
-  line-height: 1.7;
+.project-desc-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+  max-width: 90%;
 }
 
-/* BUTTON */
-.project-content button {
-  padding: 14px 28px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-teal));
+.project-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-features-list li {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.project-features-list li strong {
   color: #fff;
   font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 13px;
+}
+
+.project-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: auto;
+}
+
+.btn-primary-capsule {
+  background: #a3e635; /* Direct green for high visibility as in screenshot */
+  color: #050505;
+  padding: 18px 35px;
+  border: none;
+  border-radius: 40px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(163, 230, 53, 0.2);
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  color: #fff;
+  padding: 18px 35px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  font-weight: 900;
+  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  align-self: flex-start;
 }
 
-/* BUTTON HOVER */
-.project-content button:hover {
-  box-shadow: 0 0 25px var(--accent-soft);
-  transform: scale(1.05);
+.btn-secondary-outline:hover {
+  border-color: #a3e635;
+  color: #a3e635;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
-  .project-card, .project-card.reverse {
-    flex-direction: column !important;
-    text-align: center;
-    padding: 24px;
-    gap: 30px;
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .project-card-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
-
-  .project-content {
-    align-items: center;
+  
+  .project-info-col {
+    padding-right: 0;
   }
+}
 
-  .project-content button {
-    align-self: center;
+@media (max-width: 640px) {
+  .project-title-large {
+    font-size: 32px;
   }
-
-  .project-image img {
-    max-width: 100%;
+  
+  .project-actions {
+    flex-direction: column;
   }
 }
