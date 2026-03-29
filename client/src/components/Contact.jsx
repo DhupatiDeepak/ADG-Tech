@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle2 } from 'lucide-reac
 
 const contactDetails = [
   { icon: <Mail size={18}/>, label: 'Email', value: 'info@aibunt.com', href: 'mailto:info@aibunt.com' },
-  { icon: <Phone size={18}/>, label: 'Phone', value: '+91 9951593345', href: 'tel:+919951593345' },
+  { icon: <Phone size={18}/>, label: 'Phone', value: '+91 9849091301', href: 'tel:+919849091301' },
   { icon: <MapPin size={18}/>, label: 'Location', value: 'Hyderabad, India', href: '#' }
 ];
 

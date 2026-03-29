@@ -116,13 +116,13 @@ const MainLayout = ({ children }) => {
                           <span className="text-sm font-black tracking-tight">info@aibunt.com</span>
                        </div>
                     </a>
-                    <a href="tel:+919951593345" className="flex items-center gap-4 group">
+                    <a href="tel:+919849091301" className="flex items-center gap-4 group">
                        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[var(--accent)] group-hover:bg-[var(--accent)] group-hover:text-[var(--bg-primary)] transition-all">
                           <Phone size={18} />
                        </div>
                        <div className="flex flex-col">
                           <span className="text-[10px] uppercase font-bold opacity-40 tracking-widest">Phone Number</span>
-                          <span className="text-sm font-black tracking-tight">+91 9951593345</span>
+                          <span className="text-sm font-black tracking-tight">+91 9849091301</span>
                        </div>
                     </a>
                     <div className="flex items-center gap-4 group cursor-default">
