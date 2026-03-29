@@ -91,11 +91,11 @@ const GlassNavbar = () => {
           </Link>
 
           {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center gap-0.5">
+          <ul className="hidden md:flex items-center gap-0.5">
             {navItems.map((item) => (
-              <div
+              <li
                 key={item.path}
-                className="relative"
+                className="relative list-none"
                 onMouseEnter={() => {
                   setHoveredItem(item.name);
                   if (item.isMegaMenu) setOpenDropdown(item.name);
@@ -110,7 +110,7 @@ const GlassNavbar = () => {
                       layoutId="active-pill"
                       className="absolute inset-0 rounded-full -z-10"
                       style={{ 
-                        background: 'var(--accent-soft)', 
+                          background: 'var(--accent-soft)', 
                         border: '1px solid var(--border-strong)',
                         boxShadow: '0 0 15px var(--accent-soft)'
                       }}
@@ -177,34 +177,35 @@ const GlassNavbar = () => {
                             >
                               {col.title}
                             </h4>
-                            <div className="flex flex-col gap-2">
+                            <ul className="flex flex-col gap-2">
                               {col.subItems.map((sub, sIdx) => (
-                                <Link
-                                  key={sIdx}
-                                  to={`/departments#${sub.id}`}
-                                  onClick={() => {
-                                    setOpenDropdown(null);
-                                    setTimeout(() => {
-                                      const el = document.getElementById(sub.id);
-                                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    }, 100);
-                                  }}
-                                  className="group/item flex items-center gap-3 py-3 px-3 rounded-2xl transition-all hover:bg-white/5 border border-transparent hover:border-white/10"
-                                >
-                                  <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
-                                    style={{ background: `${col.color}18`, color: col.color }}>
-                                    {sub.icon}
-                                  </div>
-                                  <div className="flex flex-col">
-                                    <span className="text-[12px] font-black uppercase tracking-wide text-[var(--text-primary)] group-hover/item:text-[var(--accent)] transition-colors leading-tight">
-                                      {sub.name}
-                                    </span>
-                                    <span className="text-[10px] opacity-40 font-medium leading-tight mt-0.5">{sub.desc}</span>
-                                  </div>
-                                  <ChevronRight size={12} className="ml-auto opacity-0 group-hover/item:opacity-60 transition-all -translate-x-1 group-hover/item:translate-x-0" />
-                                </Link>
+                                <li key={sIdx} className="list-none">
+                                  <Link
+                                    to={`/departments#${sub.id}`}
+                                    onClick={() => {
+                                      setOpenDropdown(null);
+                                      setTimeout(() => {
+                                        const el = document.getElementById(sub.id);
+                                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                      }, 100);
+                                    }}
+                                    className="group/item flex items-center gap-3 py-3 px-3 rounded-2xl transition-all hover:bg-white/5 border border-transparent hover:border-white/10"
+                                  >
+                                    <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 transition-all group-hover/item:scale-110"
+                                      style={{ background: `${col.color}18`, color: col.color }}>
+                                      {sub.icon}
+                                    </div>
+                                    <div className="flex flex-col">
+                                      <span className="text-[12px] font-black uppercase tracking-wide text-[var(--text-primary)] group-hover/item:text-[var(--accent)] transition-colors leading-tight">
+                                        {sub.name}
+                                      </span>
+                                      <span className="text-[10px] opacity-40 font-medium leading-tight mt-0.5">{sub.desc}</span>
+                                    </div>
+                                    <ChevronRight size={12} className="ml-auto opacity-0 group-hover/item:opacity-60 transition-all -translate-x-1 group-hover/item:translate-x-0" />
+                                  </Link>
+                                </li>
                               ))}
-                            </div>
+                            </ul>
                           </div>
                         ))}
                       </div>
@@ -217,59 +218,63 @@ const GlassNavbar = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </li>
             ))}
 
-            <div className="w-px h-4 mx-2" style={{ background: 'var(--border-color)' }} />
+            <li className="list-none w-px h-4 mx-2" style={{ background: 'var(--border-color)' }} />
 
-            <Link
-              to="/contact"
-              className="relative px-4 py-2.5 flex items-center gap-2 rounded-full transition-all duration-300 group"
-              style={{ color: isActive('/contact') ? 'var(--accent)' : 'var(--text-secondary)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--accent-soft)';
-                e.currentTarget.style.color = 'var(--text-primary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '';
-                e.currentTarget.style.color = isActive('/contact') ? 'var(--accent)' : 'var(--text-secondary)';
-              }}
-            >
-              {isActive('/contact') && (
-                <motion.div
-                  layoutId="active-pill"
-                  className="absolute inset-0 rounded-full -z-10"
-                  style={{ 
-                    background: 'var(--accent-soft)', 
-                    border: '1px solid var(--border-strong)',
-                    boxShadow: '0 0 15px var(--accent-soft)'
-                  }}
-                />
-              )}
-              <Mail size={15} />
-              <span className="text-[11px] uppercase tracking-widest font-bold">Contact</span>
-            </Link>
+            <li className="list-none">
+              <Link
+                to="/contact"
+                className="relative px-4 py-2.5 flex items-center gap-2 rounded-full transition-all duration-300 group"
+                style={{ color: isActive('/contact') ? 'var(--accent)' : 'var(--text-secondary)' }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--accent-soft)';
+                  e.currentTarget.style.color = 'var(--text-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = '';
+                  e.currentTarget.style.color = isActive('/contact') ? 'var(--accent)' : 'var(--text-secondary)';
+                }}
+              >
+                {isActive('/contact') && (
+                  <motion.div
+                    layoutId="active-pill"
+                    className="absolute inset-0 rounded-full -z-10"
+                    style={{ 
+                      background: 'var(--accent-soft)', 
+                      border: '1px solid var(--border-strong)',
+                      boxShadow: '0 0 15px var(--accent-soft)'
+                    }}
+                  />
+                )}
+                <Mail size={15} />
+                <span className="text-[11px] uppercase tracking-widest font-bold">Contact</span>
+              </Link>
+            </li>
 
-            <div className="w-px h-4 mx-2" style={{ background: 'var(--border-color)' }} />
+            <li className="list-none w-px h-4 mx-2" style={{ background: 'var(--border-color)' }} />
 
-            <motion.button
-              onClick={toggleTheme}
-              className="theme-toggle"
-              whileTap={{ scale: 0.85 }}
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={isDark ? 'sun' : 'moon'}
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  {isDark ? <Sun size={15} /> : <Moon size={15} />}
-                </motion.span>
-              </AnimatePresence>
-            </motion.button>
-          </div>
+            <li className="list-none">
+              <motion.button
+                onClick={toggleTheme}
+                className="theme-toggle"
+                whileTap={{ scale: 0.85 }}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={isDark ? 'sun' : 'moon'}
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    {isDark ? <Sun size={15} /> : <Moon size={15} />}
+                  </motion.span>
+                </AnimatePresence>
+              </motion.button>
+            </li>
+          </ul>
 
           {/* Mobile UI */}
           <div className="md:hidden flex items-center gap-2">
