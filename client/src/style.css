@@ -306,6 +306,11 @@ html {
     color: var(--marquee-text);
     font-family: 'Poppins', sans-serif;
   }
+
+  /* Font Poppins */
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
 }
 
 /* ─── SCROLLBAR ─── */

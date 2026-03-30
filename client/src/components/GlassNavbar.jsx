@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Layout, Mail, Settings, Globe, Menu, X, Sun, Moon, ChevronDown, ChevronRight, Wrench, Factory, ScanLine, BrainCircuit, Bot, Code, CircuitBoard, Bike } from 'lucide-react';
+import { Home, Layout, Mail, Settings, Globe, Menu, X, Sun, Moon, ChevronDown, ChevronRight, Wrench, Factory, BrainCircuit, Bot, Code, Bike } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import logo from '../assets/aibunt_logo.png';
 
@@ -43,17 +43,16 @@ const GlassNavbar = () => {
           title: 'MECHANICAL & AUTO',
           color: '#85b53d',
           subItems: [
-            { name: 'Mechanical Design', id: 'mechanical', icon: <Wrench size={16}/>, desc: 'CAD/CAM, Reverse Engineering, DFM' },
+            { name: 'Mechanical Engineering Services', id: 'mechanical', icon: <Wrench size={16}/>, desc: 'CAD/CAM, Reverse Engineering, DFM' },
             { name: 'Electric Bike Design', id: 'ebike', icon: <Bike size={16}/>, desc: 'e-Bike Design, CATIA, CAD Modeling' },
-            { name: 'Manufacturing & Fabrication', id: 'manufacturing', icon: <Factory size={16}/>, desc: 'Vendor platform, production & assembly' },
-            { name: 'Inspection & Quality with AI', id: 'inspection', icon: <ScanLine size={16}/>, desc: 'AI visual inspection & QA docs' }
+            { name: 'Manufacturing & Fabrication', id: 'manufacturing', icon: <Factory size={16}/>, desc: 'Vendor platform, production & assembly' }
           ]
         },
         {
           title: 'ARTIFICIAL INTELLIGENCE',
           color: '#10b981',
           subItems: [
-            { name: 'Design Automation with AI', id: 'design-ai', icon: <BrainCircuit size={16}/>, desc: '2D→3D, BOM, Generative Design' },
+            { name: 'Design Automation with AI', id: 'design-ai', icon: <BrainCircuit size={16}/>, desc: '2D→3D, BOM, Generative Design & AI Inspection' },
             { name: 'Robotics & AI', id: 'robotics', icon: <Bot size={16}/>, desc: 'Vision, SLAM, Digital Twin, Robot Arms' }
           ]
         },
@@ -61,8 +60,7 @@ const GlassNavbar = () => {
           title: 'SOFTWARE & TECH',
           color: '#06b6d4',
           subItems: [
-            { name: 'Web & Software Services', id: 'software', icon: <Code size={16}/>, desc: 'Web apps, ERP, AI chatbots, cloud' },
-            { name: 'ECD Services', id: 'ecd', icon: <CircuitBoard size={16}/>, desc: 'PCB, PLC, SCADA, Embedded systems' }
+            { name: 'Web & Software Services', id: 'software', icon: <Code size={16}/>, desc: 'Web apps, ERP, AI chatbots, cloud' }
           ]
         }
       ]

@@ -7,16 +7,14 @@ const departments = [
     id: "mechanical",
     icon: <Settings size={36}/>,
     color: "#10B981",
-    title: "Mechanical Design",
+    title: "Mechanical Engineering Services",
     subtitle: "Precision Engineering & CAD",
-    desc: "End-to-end mechanical design and engineering services using advanced CAD/CAM tools, delivering precise components and assemblies for industrial applications.",
+    desc: "Mechanical engineering services across Hyderabad include CAD design, 3D modeling, CAE analysis (FEA/CFD), and product design for sectors like aerospace, automotive, and industrial machinery. We cover the full product lifecycle from conceptualization to manufacturing and testing.",
     services: [
-      { name: "2D & 3D CAD Modeling", detail: "SolidWorks, AutoCAD, CATIA, Fusion 360" },
-      { name: "Product Design", detail: "From concept to manufacturing-ready drawings" },
-      { name: "Reverse Engineering", detail: "3D scanning to accurate CAD models" },
-      { name: "GD&T & Tolerancing", detail: "Precise dimensional specifications" },
-      { name: "Design for Manufacturing (DFM)", detail: "Cost-effective, machinable designs" },
-      { name: "Assembly Drawings", detail: "BOM, exploded views, technical documentation" }
+      { name: "Mechanical Design & Drafting (using AI tools)", detail: "2D/3D CAD design, sheet metal, structural, and machine design using tools like SolidWorks, AutoCAD, and Creo." },
+      { name: "CAE Analysis & Simulation", detail: "FEA and CFD simulations to optimize product performance and ensure structural integrity." },
+      { name: "Industrial Solutions", detail: "Plant layout, material handling, utility system design, and special purpose machine development." },
+      { name: "Product Lifecycle Management", detail: "Prototyping, testing, DFM/DFA/DFR support, and PLM consultancy." }
     ]
   },
   {
@@ -41,16 +39,18 @@ const departments = [
     color: "#85B53D",
     title: "Design Automation with AI",
     subtitle: "AI-Powered Engineering Intelligence",
-    desc: "We transform traditional engineering workflows using AI — automating designs, cost estimation and quality checks through intelligent, use-case-driven solutions.",
+    desc: "We transform traditional engineering workflows using AI — automating designs, cost estimation and quality checks through intelligent, use-case-driven solutions. The integration of AI with CAD helps drive productivity by automating repetitive tasks and providing intelligent recommendations.",
     services: [
       { name: "2D Drawing → 3D Model using AI", detail: "Convert flat drawings to full 3D models automatically" },
       { name: "Auto BOM Generation", detail: "Instant Bill of Materials from AI design analysis" },
       { name: "Cost Estimation using AI", detail: "Smart, accurate production cost prediction" },
-      { name: "Vastu Layout Recognition", detail: "AI-assisted spatial and structural layout analysis" },
-      { name: "Brick Calculation Automation", detail: "Automated material quantity calculations" },
       { name: "Drawing Error Detection", detail: "AI-based quality checks for CAD drawings" },
       { name: "Design Optimization using AI", detail: "Topology optimization and weight reduction" },
-      { name: "Generative Design", detail: "AI-generated design variants for optimal performance" }
+      { name: "Generative Design", detail: "AI-generated design variants for optimal performance" },
+      { name: "AI Visual Inspection", detail: "Camera-based defect detection on production lines" },
+      { name: "Defect Detection using AI", detail: "Real-time surface defect classification" },
+      { name: "Quality Inspection Reports", detail: "Detailed, professional QA documentation" },
+      { name: "Weld Inspection", detail: "Visual and AI-based weld quality analysis" }
     ]
   },
   {
@@ -91,25 +91,6 @@ const departments = [
     ]
   },
   {
-    id: "inspection",
-    icon: <ScanLine size={36}/>,
-    color: "#8B5CF6",
-    title: "Inspection & Quality with AI",
-    subtitle: "AI-Powered Quality Assurance",
-    desc: "Combining traditional metrology with AI-powered vision systems to deliver fast, accurate and fully documented quality assurance for manufactured parts.",
-    services: [
-      { name: "2D Drawing Inspection", detail: "Automated vs. manual drawing comparison" },
-      { name: "Quality Inspection Reports", detail: "Detailed, professional QA documentation" },
-      { name: "Weld Inspection", detail: "Visual and AI-based weld quality analysis" },
-      { name: "Dimensional Inspection", detail: "CMM, vernier and 3D scan comparison" },
-      { name: "AI Visual Inspection", detail: "Camera-based defect detection on production lines" },
-      { name: "Defect Detection using AI", detail: "Real-time surface defect classification" },
-      { name: "Root Cause Analysis", detail: "Systematic failure investigation and reporting" },
-      { name: "Failure Analysis", detail: "Material and process failure diagnostics" },
-      { name: "QA Documentation", detail: "PPAP, FMEA, control plans and MSA" }
-    ]
-  },
-  {
     id: "software",
     icon: <Code size={36}/>,
     color: "#EC4899",
@@ -127,22 +108,6 @@ const departments = [
       { name: "AI Chatbots & Trade Bots", detail: "Intelligent automated assistants for business" },
       { name: "Hosting & Domain Services", detail: "End-to-end deployment and maintenance" }
     ]
-  },
-  {
-    id: "ecd",
-    icon: <CircuitBoard size={36}/>,
-    color: "#F97316",
-    title: "ECD Services",
-    subtitle: "Electrical, Control & Design",
-    desc: "Delivering robust electrical and control design engineering for industrial automation, embedded systems and electronic product development.",
-    services: [
-      { name: "PCB Design & Layout", detail: "Schematic to production-ready PCB files" },
-      { name: "Embedded Systems", detail: "Arduino, Raspberry Pi, STM32 based systems" },
-      { name: "Control System Design", detail: "PLC programming, HMI and SCADA systems" },
-      { name: "Electrical Wiring Drawings", detail: "Panel layouts, single-line diagrams" },
-      { name: "IoT Integration", detail: "Sensor networks and cloud data pipelines" },
-      { name: "Industrial Automation", detail: "Factory automation and motor control systems" }
-    ]
   }
 ];
 
@@ -156,7 +121,7 @@ const DeptCard = ({ dept }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] overflow-hidden group hover:border-[var(--accent)]/30 transition-all duration-500"
+      className="rounded-[2.5rem] border border-[var(--border-color)] bg-[var(--bg-card)] overflow-hidden group hover:border-[var(--accent)]/60 hover:shadow-[0_20px_50px_-10px_rgba(133,181,61,0.25)] transition-all duration-500"
     >
       {/* Header */}
       <div className="p-8 md:p-10">
@@ -178,7 +143,7 @@ const DeptCard = ({ dept }) => {
             {/* Service Tags Preview */}
             <div className="flex flex-wrap gap-2 mb-4">
               {dept.services.slice(0, 4).map((s, i) => (
-                <span key={i} className="text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
+                <span key={i} className="text-[11.5px] font-poppins font-black uppercase tracking-widest px-4 py-2 rounded-full"
                   style={{ background: `${dept.color}12`, color: dept.color }}>
                   {s.name}
                 </span>
@@ -192,11 +157,11 @@ const DeptCard = ({ dept }) => {
 
             <button
               onClick={() => setExpanded(!expanded)}
-              className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] transition-all"
+              className="flex items-center gap-2 text-[12.5px] font-poppins font-extrabold uppercase tracking-widest transition-all"
               style={{ color: dept.color }}
             >
               {expanded ? "Hide Services" : "View All Services"}
-              {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+              {expanded ? <ChevronUp size={16} /> : <ChevronDown size={14} />}
             </button>
           </div>
         </div>
@@ -249,12 +214,12 @@ const sections = [
   {
     title: "Artificial Intelligence",
     color: "#85B53D",
-    ids: ["design-ai", "robotics", "inspection"]
+    ids: ["design-ai", "robotics"]
   },
   {
     title: "Software & Tech",
     color: "#06B6D4",
-    ids: ["software", "ecd"]
+    ids: ["software"]
   }
 ];
 
@@ -276,7 +241,7 @@ const DepartmentsPage = () => {
             Our <span className="gradient-text">Departments</span>
           </h1>
           <p className="text-xl opacity-70 font-medium leading-relaxed max-w-3xl mx-auto">
-            Seven core pillars of engineering excellence — mechanical precision, AI intelligence, and full-stack digital delivery, all under one roof.
+            Six core pillars of engineering excellence — mechanical precision, AI intelligence, and full-stack digital delivery, all under one roof.
           </p>
         </motion.div>
 
