@@ -45,35 +45,93 @@ const Home = () => {
       {/* 1. HERO SECTION */}
       <motion.section 
         style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
-        className="relative min-h-[90vh] flex items-center justify-center overflow-hidden z-10"
+        className="relative min-h-[100vh] flex items-center overflow-hidden z-10 pt-20 md:pt-0"
       >
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="container mx-auto px-6 relative z-10 text-center"
-        >
-          <motion.div variants={itemVariants}>
-            <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.5em] mb-6 block">
-              Precision Engineering & Industrial AI
-            </span>
-            <h1 className="text-7xl md:text-9xl font-[1000] uppercase italic tracking-tighter leading-none mb-8">
-              AI <span className="gradient-text">BUNT.</span>
-            </h1>
-            <p className="text-xl md:text-2xl opacity-60 font-medium max-w-2xl mx-auto mb-10 leading-tight">
-              Architecting the next generation of industrial intelligence through mechanical mastery and software innovation.
-            </p>
-            
-            <MagneticButton>
-              <button 
-                onClick={() => navigate('/contact')}
-                className="px-10 py-5 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-black uppercase text-xs tracking-widest hover:scale-105 transition-transform flex items-center gap-3 mx-auto"
-              >
-                Inquire Now <ArrowRight size={16} />
-              </button>
-            </MagneticButton>
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          {/* LEFT: CONTENT */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="text-left"
+          >
+            <motion.div variants={itemVariants}>
+              <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.5em] mb-6 block">
+                Precision Engineering & Industrial AI
+              </span>
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-[1000] uppercase italic tracking-tighter leading-[0.9] mb-8">
+                AI <span className="gradient-text">BUNT.</span>
+              </h1>
+              <p className="text-lg md:text-xl opacity-60 font-medium max-w-xl mb-10 leading-tight">
+                Architecting the next generation of industrial intelligence through mechanical mastery and software innovation.
+              </p>
+              
+              <div className="flex flex-wrap gap-4">
+                <MagneticButton>
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className="px-8 py-4 bg-[var(--text-primary)] text-[var(--bg-primary)] rounded-full font-black uppercase text-[10px] tracking-widest hover:scale-105 transition-transform flex items-center gap-3"
+                  >
+                    Inquire Now <ArrowRight size={14} />
+                  </button>
+                </MagneticButton>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* RIGHT: CARD AREA */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+            className="relative perspective-lg hidden lg:block"
+          >
+            <motion.div 
+              whileHover={{ rotateY: -5, rotateX: 5, scale: 1.02 }}
+              onClick={() => navigate('/manufacturing')}
+              className="relative group cursor-pointer"
+            >
+              {/* Card Glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-[var(--accent)] to-emerald-500 opacity-20 blur-3xl group-hover:opacity-30 transition-opacity rounded-[3rem]" />
+              
+              <div className="relative glass-panel rounded-[2.5rem] border border-[var(--border-color)] p-10 overflow-hidden shadow-2xl">
+                {/* Decorative Elements */}
+                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                  <MechanicalGear size={200} speed={0.5} />
+                </div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-[var(--accent-soft)] text-[var(--accent)] flex items-center justify-center mb-8 border border-[var(--accent)]/20 shadow-inner">
+                    <Settings size={32} className="group-hover:rotate-90 transition-transform duration-700" />
+                  </div>
+                  
+                  <span className="text-[var(--accent)] text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Our Expertise</span>
+                  <h3 className="text-4xl font-[1000] uppercase tracking-tighter mb-6 leading-none">
+                    Manufacturing <br/> <span className="gradient-text italic">Services</span>
+                  </h3>
+                  
+                  <p className="text-sm opacity-60 font-semibold uppercase tracking-widest leading-relaxed mb-10 max-w-[280px]">
+                    From rapid prototyping to high-precision CNC machining and industrial automation.
+                  </p>
+                  
+                  <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-[var(--accent)] group-hover:gap-5 transition-all">
+                    Explore Solutions <ArrowRight size={16} />
+                  </div>
+                </div>
+
+                {/* Progress Indicators */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-[var(--border-color)] overflow-hidden">
+                   <motion.div 
+                     initial={{ width: 0 }}
+                     whileInView={{ width: "100%" }}
+                     transition={{ duration: 2, delay: 1 }}
+                     className="h-full bg-gradient-to-r from-[var(--accent)] to-emerald-500"
+                   />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
 
         {/* Scroll Indicator */}
         <motion.div 
