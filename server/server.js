@@ -113,7 +113,7 @@ app.post("/api/contact", async (req, res) => {
 app.use("/downloads", express.static(downloadDir));
 app.use(express.static(path.resolve(__dirname, "../client/dist")));
 
-app.get("/*", (req, res) => {
+app.get(/.*/, (req, res) => {
   // Only serve index.html for non-API routes
   if (req.url.startsWith("/api")) {
     return res.status(404).json({ error: "API Route Not Found" });
