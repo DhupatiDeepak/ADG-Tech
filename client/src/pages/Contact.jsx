@@ -1,14 +1,37 @@
 import React from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 const Contact = () => {
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        const formData = {
+            name: e.target[0].value,
+            email: e.target[1].value,
+            subject: e.target[2].value,
+            message: e.target[3].value,
+        };
+
         const toastId = toast.loading("Sending message...");
-        setTimeout(() => {
+
+        try {
+            const response = await fetch(`${API_URL}/api/contact`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) throw new Error("Failed to send message");
+
             toast.success("Message sent successfully!", { id: toastId });
             e.target.reset();
-        }, 1500);
+        } catch (err) {
+            console.error(err);
+            toast.error("Failed to send message. Please try again.", { id: toastId });
+        }
     };
 
     return (

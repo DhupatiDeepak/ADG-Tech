@@ -11,6 +11,7 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import CareersPage from './pages/CareersPage';
 import DepartmentsPage from './pages/DepartmentsPage';
+import ManufacturingPage from './pages/ManufacturingPage';
 import ScrollProgress from './components/ScrollProgress';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -21,7 +22,7 @@ const App = () => {
   return (
     <div
       className="min-h-screen font-sans"
-      style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+      style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)', position: 'relative' }}
     >
       <ScrollProgress />
       <Toaster
@@ -46,6 +47,7 @@ const App = () => {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/manufacturing" element={<ManufacturingPage />} />
             <Route path="/departments" element={<DepartmentsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/careers" element={<CareersPage />} />
