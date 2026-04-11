@@ -8,6 +8,7 @@ import MainLayout from './layouts/MainLayout';
 import CursorGlow from './components/CursorGlow';
 import ProjectsPage from './pages/ProjectsPage';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
 import CareersPage from './pages/CareersPage';
 import DepartmentsPage from './pages/DepartmentsPage';
 import ManufacturingPage from './pages/ManufacturingPage';
@@ -45,6 +46,7 @@ const App = () => {
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/manufacturing" element={<ManufacturingPage />} />
             <Route path="/departments" element={<DepartmentsPage />} />
             <Route path="/projects" element={<ProjectsPage />} />
