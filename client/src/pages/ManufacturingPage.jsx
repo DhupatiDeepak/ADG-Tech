@@ -66,7 +66,7 @@ const technologies = [
 /* ─── Accepted file types helper ─────────────────────────────────────────── */
 const FILE_TYPES_LABEL = 'STEP, STP, IGES, IGS, SLDPRT, SAT, X_T, X_B, IPT, PRT, CATPART';
 
-const API_URL = import.meta.env.VITE_API_URL || ""; // Dynamic Backend URL (empty string uses relative path in prod)
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? window.location.origin : "http://localhost:5000"); // Dynamic Backend URL
 
 /* ═══════════════════════════════════════════════════════════════════════════ */
 const ManufacturingPage = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? window.location.origin : "http://localhost:5000");
 
 const Contact = () => {
     const handleSubmit = async (e) => {

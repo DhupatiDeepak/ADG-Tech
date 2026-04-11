@@ -8,6 +8,8 @@ const contactDetails = [
   { icon: <MapPin size={18}/>, label: 'Location', value: 'Hyderabad, India', href: '#' }
 ];
 
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? window.location.origin : "http://localhost:5000");
+
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
   const [sent, setSent] = useState(false);
@@ -20,7 +22,7 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const resp = await fetch('/api/contact', {
+      const resp = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
