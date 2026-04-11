@@ -32,7 +32,6 @@ const GlassNavbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/', icon: <Home size={15} /> },
-    { name: 'About Us', path: '/about', icon: <Globe size={15} /> },
     { name: 'Manufacturing Services', path: '/manufacturing', icon: <Factory size={15} /> },
     { 
       name: 'Departments', 
