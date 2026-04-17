@@ -13,9 +13,9 @@ const os = require("os");
 const PORT = process.env.PORT || 5000;
 
 // ─── DIRECTORIES ───
-const uploadDir = path.join(__dirname, "uploads");
+const uploadDir = path.join(os.tmpdir(), "aibunt_uploads");
 const downloadDir = path.join(os.tmpdir(), "aibunt_bom_temp");
-if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 if (!fs.existsSync(downloadDir)) fs.mkdirSync(downloadDir, { recursive: true });
 
 // ─── MIDDLEWARE ───
