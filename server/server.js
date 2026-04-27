@@ -30,10 +30,24 @@ app.use((req, res, next) => {
 
 // ─── API ROUTES (DEFINED FIRST) ───
 
-// Health Check
+// Health Check (For keep-alive)
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok", time: new Date().toISOString() });
 });
+
+// Self-ping every 5 minutes to prevent Render from sleeping
+const https = require("https");
+setInterval(() => {
+  https.get("https://adg-tech.onrender.com/health", (resp) => {
+    console.log(`Keep-alive ping: ${resp.statusCode}`);
+  }).on("error", (err) => {
+    console.log("Keep-alive ping error: " + err.message);
+  });
+}, 120000); // 2 minutes in milliseconds
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadDir),
