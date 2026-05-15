@@ -275,7 +275,24 @@ const GlassNavbar = () => {
           </ul>
 
           {/* Mobile UI */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-3">
+            <motion.button
+              onClick={toggleTheme}
+              className="theme-toggle"
+              whileTap={{ scale: 0.85 }}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.span
+                  key={isDark ? 'sun' : 'moon'}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  {isDark ? <Sun size={15} /> : <Moon size={15} />}
+                </motion.span>
+              </AnimatePresence>
+            </motion.button>
             <button
               className="p-2.5 rounded-full transition-all duration-300"
               style={{ color: 'var(--text-primary)', background: 'var(--accent-soft)', border: '1px solid var(--border-color)' }}
@@ -309,14 +326,6 @@ const GlassNavbar = () => {
                 <img src={logo} alt="Logo" className="h-14 w-auto object-contain logo-blend" />
               </Link>
               <div className="flex items-center gap-3">
-                <motion.button 
-                  onClick={toggleTheme} 
-                  className="theme-toggle" 
-                  style={{ width: '2.5rem', height: '2.5rem' }}
-                  whileTap={{ scale: 0.85 }}
-                >
-                  {isDark ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.button>
                 <button
                   className="p-2 rounded-full transition-all duration-300"
                   style={{ 
